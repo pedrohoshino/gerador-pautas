@@ -17,10 +17,8 @@ import br.unicamp.repository.ShipwreckRepository;
 @RequestMapping("api/v1/")
 public class ShipwreckController {
 	
-	
 	@Autowired
 	private ShipwreckRepository shipwreckRepository;
-	
 	
 	@RequestMapping(value = "shipwrecks", method = RequestMethod.GET)
 	public List<Shipwreck> list(){
@@ -30,8 +28,8 @@ public class ShipwreckController {
 	
 	@RequestMapping(value = "shipwrecks", method = RequestMethod.POST)
 	public Shipwreck create(@RequestBody Shipwreck shipwreck){
-		return ShipwreckStub.create(shipwreck);
-		//return shipwreckRepository.saveAndFlush(shipwreck);
+		//return ShipwreckStub.create(shipwreck);
+		return shipwreckRepository.saveAndFlush(shipwreck);
 	}
 	
 	@RequestMapping(value = "shipwrecks/{id}", method = RequestMethod.GET)
