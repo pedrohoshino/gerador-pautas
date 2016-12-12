@@ -31,8 +31,6 @@
 			return origController.apply(this, arguments);
 		}
 
-		var viewsPrefix = 'views/';
-
 		// For any unmatched url, send to /
 		$urlRouterProvider.otherwise("/")
 
@@ -40,28 +38,62 @@
 			// you can set this to no template if you just want to use the html in the page
 			.state('home', {
 				url: "/",
-				templateUrl: viewsPrefix + "home.html",
+				templateUrl: "views/home.html",
 				data: {
 					pageTitle: 'Home'
 				}
 			})
-			.state('shipwrecks',{
-	        url:'/shipwrecks',
-	        templateUrl: viewsPrefix + 'shipwrecks.html',
+			.state('pautas',{
+	        url:'/pautas',
+	        templateUrl: 'views/pautas/pautas.html',
 	        controller:'ShipwreckListController'
 	    }).state('viewShipwreck',{
 	       url:'/shipwrecks/:id/view',
-	       templateUrl: viewsPrefix + 'shipwreck-view.html',
+	       templateUrl: 'views/shipwreck-view.html',
 	       controller:'ShipwreckViewController'
 	    }).state('newShipwreck',{
 	        url:'/shipwrecks/new',
-	        templateUrl: viewsPrefix + 'shipwreck-add.html',
+	        templateUrl: 'views/shipwreck-add.html',
 	        controller:'ShipwreckCreateController'
 	    }).state('editShipwreck',{
 	        url:'/shipwrecks/:id/edit',
-	        templateUrl: viewsPrefix + 'shipwreck-edit.html',
+	        templateUrl: 'views/shipwreck-edit.html',
 	        controller:'ShipwreckEditController'
 	    })
+
+			.state('reunioes',{
+				url:'/reunioes',
+				templateUrl: 'views/reunioes/reunioes.html',
+				controller:'ShipwreckListController'
+			})
+
+			.state('atas',{
+				url:'/atas',
+				templateUrl: 'views/atas/atas.html',
+				controller:'ShipwreckListController'
+			})
+
+			.state('itens',{
+				url:'/itens',
+				templateUrl: 'views/itens/itens.html',
+				controller:'ShipwreckListController'
+			}).state('newItem',{
+	        url:'/itens/new',
+	        templateUrl: 'views/itens/iten-create.html',
+	        controller:'ItemCreateController'
+	    })
+
+			.state('participantes',{
+				url:'/participantes',
+				templateUrl: 'views/participantes/participantes.html',
+				controller:'ShipwreckListController'
+			})
+
+			.state('arquivos',{
+				url:'/arquivos',
+				templateUrl: 'views/arquivos/arquivos.html',
+				controller:'ShipwreckListController'
+			})
 	})
 	.directive('updateTitle', ['$rootScope', '$timeout',
 		function($rootScope, $timeout) {

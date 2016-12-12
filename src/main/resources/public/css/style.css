@@ -11,10 +11,10 @@ body {
 .pad-top {
   padding-top: 60px;
 }
-.shipwrecktable tr td:nth-child(2) {
+.simpletable tr td:nth-child(2) {
   width: 150px;
 }
-.shipwrecktable tr:nth-child(1) td {
+.simpletable tr:nth-child(1) td {
   border-top: none;
 }
 /* Have to set height explicity on ui-view

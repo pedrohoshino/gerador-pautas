@@ -4,7 +4,7 @@ angular.module('app.controllers', []).controller('ShipwreckListController', func
   $scope.deleteShipwreck = function(shipwreck) { // Delete a Shipwreck. Issues a DELETE to /api/v1/shipwrecks/:id
     if (popupService.showPopup('Really delete this?')) {
       shipwreck.$delete(function() {
-        $scope.shipwrecks = Shipwreck.query(); 
+        $scope.shipwrecks = Shipwreck.query();
         $state.go('shipwrecks');
       });
     }
@@ -16,7 +16,7 @@ angular.module('app.controllers', []).controller('ShipwreckListController', func
 
   $scope.addShipwreck = function() { //create a new shipwreck. Issues a POST to /api/v1/shipwrecks
     $scope.shipwreck.$save(function() {
-      $state.go('shipwrecks'); // on success go back to the list i.e. shipwrecks state.
+      $state.go('pautas'); // on success go back to the list i.e. shipwrecks state.
     });
   };
 }).controller('ShipwreckEditController', function($scope, $state, $stateParams, Shipwreck) {
@@ -31,4 +31,12 @@ angular.module('app.controllers', []).controller('ShipwreckListController', func
   };
 
   $scope.loadShipwreck(); // Load a shipwreck which can be edited on UI
+}).controller('ItemCreateController', function($scope, $state, $stateParams, Shipwreck) {
+  // $scope.shipwreck = new Shipwreck();  //create new shipwreck instance. Properties will be set via ng-model on UI
+
+  $scope.addItem = function() { //create a new shipwreck. Issues a POST to /api/v1/shipwrecks
+    // $scope.shipwreck.$save(function() {
+      $state.go('itens'); // on success go back to the list i.e. shipwrecks state.
+      // });
+  };
 });
