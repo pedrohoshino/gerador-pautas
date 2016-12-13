@@ -1,0 +1,25 @@
+<div class="container pad-top">
+  <div ng-init="getItem()">
+    <table class="table simpletable">
+        <tr>
+            <td><h3>Details for {{item.titulo}}</h3></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Titulo</td>
+            <td>{{item.titulo}}</td>
+        </tr>
+        <tr>
+            <td>Descrição</td>
+            <td>{{item.descricao}}</td>
+        </tr>
+        <tr>
+            <td>Situação</td>
+            <td>{{item.situacao}}</td>
+        </tr>
+    </table>
+  </div>
+  <div>
+      <a class="btn btn-primary" ui-sref="editItem({id:item.id})">Edit</a>
+  </div>
+</div>

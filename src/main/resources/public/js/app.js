@@ -1,5 +1,5 @@
 (function() {
-	var app = angular.module('app', ['ui.router', 'navController', 'ngAnimate', 'ui.bootstrap', 'ngResource', 'app.controllers', 'app.services'])
+	var app = angular.module('app', ['ui.router', 'navController', 'ngAnimate', 'ui.bootstrap', 'ngResource', 'app.controllers', 'app.services', 'item.controllers'])
 
 	// define for requirejs loaded modules
 	define('app', [], function() { return app; });
@@ -44,22 +44,22 @@
 				}
 			})
 			.state('pautas',{
-	        url:'/pautas',
-	        templateUrl: 'views/pautas/pautas.html',
-	        controller:'ShipwreckListController'
-	    }).state('viewShipwreck',{
-	       url:'/shipwrecks/:id/view',
-	       templateUrl: 'views/shipwreck-view.html',
-	       controller:'ShipwreckViewController'
-	    }).state('newShipwreck',{
-	        url:'/shipwrecks/new',
-	        templateUrl: 'views/shipwreck-add.html',
-	        controller:'ShipwreckCreateController'
-	    }).state('editShipwreck',{
-	        url:'/shipwrecks/:id/edit',
-	        templateUrl: 'views/shipwreck-edit.html',
-	        controller:'ShipwreckEditController'
-	    })
+		        url:'/pautas',
+		        templateUrl: 'views/pautas/pautas.html',
+		        controller:'ShipwreckListController'
+		    }).state('viewShipwreck',{
+		       url:'/shipwrecks/:id/view',
+		       templateUrl: 'views/shipwreck-view.html',
+		       controller:'ShipwreckViewController'
+		    }).state('newShipwreck',{
+		        url:'/shipwrecks/new',
+		        templateUrl: 'views/shipwreck-add.html',
+		        controller:'ShipwreckCreateController'
+		    }).state('editShipwreck',{
+		        url:'/shipwrecks/:id/edit',
+		        templateUrl: 'views/shipwreck-edit.html',
+		        controller:'ShipwreckEditController'
+		    })
 
 			.state('reunioes',{
 				url:'/reunioes',
@@ -76,12 +76,20 @@
 			.state('itens',{
 				url:'/itens',
 				templateUrl: 'views/itens/itens.html',
-				controller:'ShipwreckListController'
+				controller:'ItemController'
 			}).state('newItem',{
-	        url:'/itens/new',
-	        templateUrl: 'views/itens/iten-create.html',
-	        controller:'ItemCreateController'
-	    })
+        url:'/itens/new',
+        templateUrl: 'views/itens/iten-create.html',
+        controller:'ItemController'
+			}).state('viewItem',{
+        url:'/itens/:id/view',
+        templateUrl: 'views/itens/iten-view.html',
+        controller:'ItemController'
+			}).state('editItem',{
+				url:'/itens/:id/edit',
+				templateUrl: 'views/itens/iten-edit.html',
+				controller:'ItemController'
+			})
 
 			.state('participantes',{
 				url:'/participantes',

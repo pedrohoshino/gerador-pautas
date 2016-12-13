@@ -15,6 +15,7 @@ angular.module('app.controllers', []).controller('ShipwreckListController', func
   $scope.shipwreck = new Shipwreck();  //create new shipwreck instance. Properties will be set via ng-model on UI
 
   $scope.addShipwreck = function() { //create a new shipwreck. Issues a POST to /api/v1/shipwrecks
+    console.log($scope.shipwreck)
     $scope.shipwreck.$save(function() {
       $state.go('pautas'); // on success go back to the list i.e. shipwrecks state.
     });
@@ -31,12 +32,4 @@ angular.module('app.controllers', []).controller('ShipwreckListController', func
   };
 
   $scope.loadShipwreck(); // Load a shipwreck which can be edited on UI
-}).controller('ItemCreateController', function($scope, $state, $stateParams, Shipwreck) {
-  // $scope.shipwreck = new Shipwreck();  //create new shipwreck instance. Properties will be set via ng-model on UI
-
-  $scope.addItem = function() { //create a new shipwreck. Issues a POST to /api/v1/shipwrecks
-    // $scope.shipwreck.$save(function() {
-      $state.go('itens'); // on success go back to the list i.e. shipwrecks state.
-      // });
-  };
 });

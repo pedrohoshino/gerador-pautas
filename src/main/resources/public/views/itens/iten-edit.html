@@ -1,5 +1,5 @@
-<div class="container pad-top">
-  <form class="form-horizontal" role="form" ng-submit="addItem(item)">
+<div class="container pad-top" ng-init="getItem()">
+  <form class="form-horizontal" role="form" ng-submit="editItem(item)">
     <div class="form-group">
         <label for="name" class="col-sm-2 control-label">Titulo</label>
         <div class="col-sm-10">
