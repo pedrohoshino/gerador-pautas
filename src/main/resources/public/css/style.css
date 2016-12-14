@@ -17,6 +17,12 @@ body {
 .simpletable tr:nth-child(1) td {
   border-top: none;
 }
+
+.bottomButton{
+  position:fixed;
+  right:100px;
+  z-index: 1000;
+}
 /* Have to set height explicity on ui-view
 to prevent collapsing during animation*/
 [ui-view] {

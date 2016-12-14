@@ -51,9 +51,9 @@
 		       url:'/shipwrecks/:id/view',
 		       templateUrl: 'views/shipwreck-view.html',
 		       controller:'ShipwreckViewController'
-		    }).state('newShipwreck',{
-		        url:'/shipwrecks/new',
-		        templateUrl: 'views/shipwreck-add.html',
+		    }).state('newPauta',{
+		        url:'/pautas/new',
+		        templateUrl: 'views/pautas/pautas-create.html',
 		        controller:'ShipwreckCreateController'
 		    }).state('editShipwreck',{
 		        url:'/shipwrecks/:id/edit',
@@ -79,15 +79,15 @@
 				controller:'ItemController'
 			}).state('newItem',{
         url:'/itens/new',
-        templateUrl: 'views/itens/iten-create.html',
+        templateUrl: 'views/itens/itens-create.html',
         controller:'ItemController'
 			}).state('viewItem',{
         url:'/itens/:id/view',
-        templateUrl: 'views/itens/iten-view.html',
+        templateUrl: 'views/itens/itens-view.html',
         controller:'ItemController'
 			}).state('editItem',{
 				url:'/itens/:id/edit',
-				templateUrl: 'views/itens/iten-edit.html',
+				templateUrl: 'views/itens/itens-edit.html',
 				controller:'ItemController'
 			})
 

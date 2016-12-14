@@ -1,21 +1,30 @@
 <div class="container pad-top">
-  <a ui-sref="newItem" class="btn-primary btn-lg nodecoration">Criar novo Item</a>
   <table class="table simpletable" ng-init="getItens()">
-      <tr>
-          <td><h3>Todas os Itens</h3></td>
-          <td></td>
-      </tr>
-      <tr ng-repeat="item in itens">
-          <td>{{item.titulo}}</td>
-          <td>{{item.descricao}}</td>
-          <td>{{item.situacao}}</td>
-          <td>
-              <a class="btn btn-primary" ui-sref="viewItem({id:item.id})">View</a>
-              <a class="btn btn-danger"  ng-click="deleteItem(item)">Delete</a>
-          </td>
-      </tr>
+      <div>
+          <h1 class="table-title">Todos os Itens</h1>
+      </div>
+      <thead>
+        <tr>
+          <th>Titulo</th>
+          <th>Descição</th>
+          <th>Situação</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="item in itens">
+            <td>{{item.titulo}}</td>
+            <td>{{item.descricao}}</td>
+            <td>{{item.situacao}}</td>
+            <td>
+                <a class="btn btn-primary" ui-sref="viewItem({id:item.id})">View</a>
+                <a class="btn btn-primary" ui-sref="editItem({id:item.id})">Edit</a>
+                <a class="btn btn-danger"  ng-click="deleteItem(item)">Delete</a>
+            </td>
+        </tr>
+      </tbody>
   </table>
-</div>
-<div class="container pad-top">
-	<h1>Em Construção</h1>
+  <div class="bottomButton">
+    <a ui-sref="newItem" class="btn-primary btn-lg nodecoration">Criar novo Item</a>
+  <div>
 </div>
