@@ -47,18 +47,18 @@
 		        url:'/pautas',
 		        templateUrl: 'views/pautas/pautas.html',
 		        controller:'PautaController'
-		    }).state('viewShipwreck',{
-		       url:'/shipwrecks/:id/view',
-		       templateUrl: 'views/shipwreck-view.html',
-		       controller:'ShipwreckViewController'
+		    }).state('viewPauta',{
+		       url:'/pautas/:id/view',
+		       templateUrl: 'views/pautas/pautas-view.html',
+		       controller:'PautaController'
 		    }).state('newPauta',{
 		        url:'/pautas/new',
 		        templateUrl: 'views/pautas/pautas-create.html',
 		        controller:'PautaController'
-		    }).state('editShipwreck',{
-		        url:'/shipwrecks/:id/edit',
-		        templateUrl: 'views/shipwreck-edit.html',
-		        controller:'ShipwreckEditController'
+		    }).state('editPauta',{
+		        url:'/pautas/:id/edit',
+		        templateUrl: 'views/pautas/pautas-edit.html',
+		        controller:'PautaController'
 		    })
 
 			.state('reunioes',{

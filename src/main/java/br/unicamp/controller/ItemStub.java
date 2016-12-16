@@ -10,11 +10,13 @@ import br.unicamp.model.Item;
 public class ItemStub {
 
 	private static Map<Long, Item> itens = new HashMap<Long, Item>();
-	private static Long idIndex = 3L;
+	private static Long idIndex = 2L;
 
 	static {
 		Item a = new Item(1L, "Teste", "Teste", "Pendente");
 		itens.put(1L, a);
+		Item b = new Item(1L, "123", "123", "Aprovado");
+		itens.put(1L, b);
 	}
 
 	public static List<Item> list(){

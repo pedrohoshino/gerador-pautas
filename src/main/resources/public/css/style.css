@@ -42,6 +42,12 @@ body {
   right:100px;
   z-index: 1000;
 }
+
+.left-side{
+  position:fixed;
+  right:200px;
+}
+
 /* Have to set height explicity on ui-view
 to prevent collapsing during animation*/
 [ui-view] {

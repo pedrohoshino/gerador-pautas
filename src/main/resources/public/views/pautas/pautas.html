@@ -11,9 +11,9 @@
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="item in itens">
-          <td style="max-width:100px; word-wrap:break-word;">{{item.titulo}}</td>
-          <td style="max-width:100px; word-wrap:break-word;">{{item.descricao}}</td>
+      <tr ng-repeat="pauta in pautas">
+          <td style="max-width:100px; word-wrap:break-word;">{{pauta.titulo}}</td>
+          <td style="max-width:100px; word-wrap:break-word;">{{pauta.descricao}}</td>
           <td>
               <a class="btn btn-primary" ui-sref="viewPauta({id:pauta.id})">View</a>
               <a class="btn btn-primary" ui-sref="editPauta({id:pauta.id})">Edit</a>

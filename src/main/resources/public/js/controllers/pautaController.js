@@ -8,46 +8,40 @@
 
 angular.module('pauta.controllers', ['textAngular']).controller('PautaController', function($scope, $state, $stateParams, popupService, $window, $http) {
 
-  $scope.sample = 'Shout out from the javascript!';
-  $scope.htmlContent = '<h2>Testing Content</h2>'
-
-  $scope.addPauta =function (htmlContent){
-    // $state.go('pautas');
-    console.log($scope.htmlContent+"\n"+$scope.pauta.descricao+"\n"+$scope.pauta.titulo);
-    console.log(typeof($scope.htmlContent));
-
+  $scope.getPautas = function () {
+    $http.get("pauta/v1/pautas").success(function (data) {
+      $scope.pautas = data;
+    });
   };
 
-  // $scope.getItens = function () {
-  //   $http.get("item/v1/itens").success(function (data) {
-  //     $scope.itens = data;
-  //   });
-  // };
-  //
-  // $scope.addItem = function(item) {
-  //   $http.post('item/v1/itens', item).success(function() {
-  //     $state.go('itens');
-  //   });
-  // };
-  //
-  // $scope.getItem = function() {
-  //   $http.get("item/v1/itens/" + $stateParams.id).success(function (data) {
-  //     $scope.item = data;
-  //   })
-  // }
-  //
-  // $scope.deleteItem = function(item) { // Delete a Shipwreck. Issues a DELETE to /api/v1/shipwrecks/:id
-  //   if (popupService.showPopup('Quer realmente deletar?')) {
-  //       $http.delete("item/v1/itens/" + item.id).success(function(){
-  //       $state.reload();
-  //     });
-  //   }
-  // }
+  $scope.addPauta = function() {
 
-  // $scope.editItem = function(item) { //Update the edited shipwreck. Issues a PUT to /api/v1/shipwrecks/:id
-  //   $http.put('item/v1/itens/' + item.id, item).success(function() {
-  //     $state.go('itens');
-  //   });
-  // };
+    console.log($scope.pauta);
+
+    $http.post('pauta/v1/pautas', $scope.pauta).success(function() {
+      $state.go('pautas');
+    });
+  };
+
+  $scope.getPauta = function() {
+    $http.get("pauta/v1/pautas/" + $stateParams.id).success(function (data) {
+      $scope.pauta = data;
+      $scope.htmlContent = $scope.pauta.arquivo;
+    })
+  }
+
+  $scope.deletePauta = function(pauta) { // Delete a Shipwreck. Issues a DELETE to /api/v1/shipwrecks/:id
+    if (popupService.showPopup('Quer realmente deletar?')) {
+        $http.delete("pauta/v1/pautas/" + pauta.id).success(function(){
+        $state.reload();
+      });
+    }
+  }
+
+  $scope.editPauta = function() { //Update the edited shipwreck. Issues a PUT to /api/v1/shipwrecks/:id
+    $http.put('pauta/v1/pautas/' + $scope.pauta.id, $scope.pauta).success(function() {
+      $state.go('pautas');
+    });
+  };
 
 });

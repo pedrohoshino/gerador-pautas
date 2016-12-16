@@ -1,6 +1,6 @@
 <div>
   <div class="container pad-top">
-    <form class="form-horizontal" role="form" ng-submit="addPauta(htmlContent)">
+    <form class="form-horizontal" role="form" ng-submit="addPauta()">
       <h1>Pauta</h1>
 
       <div class="form-group">
@@ -15,7 +15,7 @@
               <input type="text" ng-model="pauta.descricao" class="form-control" id="descricao" placeholder="Descrição da Pauta"/>
           </div>
       </div>
-      <div text-angular ng-model="htmlContent"></div>
+      <div text-angular ng-model="pauta.arquivo"></div>
 
 
       <div>
