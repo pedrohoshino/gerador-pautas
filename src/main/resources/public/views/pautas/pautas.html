@@ -1,20 +1,30 @@
 <div class="container pad-top">
-  <a ui-sref="newPauta" class="btn-primary btn-lg nodecoration">Criar nova Pauta</a>
-  <table class="table simpletable">
+  <table class="table simpletable" ng-init="getPautas()">
+  <div>
+      <h1 class="table-title">Todas as Pautas</h1>
+  </div>
+    <thead>
       <tr>
-          <td><h3>Todas as Pautas</h3></td>
-          <td></td>
+        <th>Titulo</th>
+        <th>Descição</th>
+        <th>Ações</th>
       </tr>
-      <!--<tr ng-repeat="shipwreck in shipwrecks">
-          <td>{{shipwreck.name}}</td>
-          <td>{{shipwreck.description}}</td>
-          <td>{{shipwreck.yearDiscovered}}</td>
+    </thead>
+    <tbody>
+      <tr ng-repeat="item in itens">
+          <td style="max-width:100px; word-wrap:break-word;">{{item.titulo}}</td>
+          <td style="max-width:100px; word-wrap:break-word;">{{item.descricao}}</td>
           <td>
-              <a class="btn btn-primary" ui-sref="viewShipwreck({id:shipwreck.id})">View</a>
-              <a class="btn btn-danger"  ng-click="deleteShipwreck(shipwreck)">Delete</a>
+              <a class="btn btn-primary" ui-sref="viewPauta({id:pauta.id})">View</a>
+              <a class="btn btn-primary" ui-sref="editPauta({id:pauta.id})">Edit</a>
+              <a class="btn btn-danger"  ng-click="deletePauta(pauta)">Delete</a>
           </td>
-      </tr>-->
+      </tr>
+    </tbody>
   </table>
+  <div class="bottomButton">
+    <a ui-sref="newPauta" class="btn-primary btn-lg nodecoration" >Criar nova Pauta</a>
+  <div>
 </div>
 <div class="container pad-top">
 	<h1>Em Construção</h1>

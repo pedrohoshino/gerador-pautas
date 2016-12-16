@@ -13,9 +13,9 @@
       </thead>
       <tbody>
         <tr ng-repeat="item in itens">
-            <td>{{item.titulo}}</td>
-            <td>{{item.descricao}}</td>
-            <td>{{item.situacao}}</td>
+            <td style="max-width:100px; word-wrap:break-word;">{{item.titulo}}</td>
+            <td style="max-width:100px; word-wrap:break-word;">{{item.descricao}}</td>
+            <td style="max-width:100px; word-wrap:break-word;">{{item.situacao}}</td>
             <td>
                 <a class="btn btn-primary" ui-sref="viewItem({id:item.id})">View</a>
                 <a class="btn btn-primary" ui-sref="editItem({id:item.id})">Edit</a>
@@ -25,6 +25,6 @@
       </tbody>
   </table>
   <div class="bottomButton">
-    <a ui-sref="newItem" class="btn-primary btn-lg nodecoration">Criar novo Item</a>
+    <a ui-sref="newItem" class="btn-primary btn-lg nodecoration" >Criar novo Item</a>
   <div>
 </div>

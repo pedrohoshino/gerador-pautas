@@ -1,5 +1,5 @@
 (function() {
-	var app = angular.module('app', ['ui.router', 'navController', 'ngAnimate', 'ui.bootstrap', 'ngResource', 'app.controllers', 'app.services', 'item.controllers'])
+	var app = angular.module('app', ['ui.router', 'navController', 'ngAnimate', 'ui.bootstrap', 'ngResource', 'app.controllers', 'app.services', 'item.controllers', 'pauta.controllers'])
 
 	// define for requirejs loaded modules
 	define('app', [], function() { return app; });
@@ -46,7 +46,7 @@
 			.state('pautas',{
 		        url:'/pautas',
 		        templateUrl: 'views/pautas/pautas.html',
-		        controller:'ShipwreckListController'
+		        controller:'PautaController'
 		    }).state('viewShipwreck',{
 		       url:'/shipwrecks/:id/view',
 		       templateUrl: 'views/shipwreck-view.html',
@@ -54,7 +54,7 @@
 		    }).state('newPauta',{
 		        url:'/pautas/new',
 		        templateUrl: 'views/pautas/pautas-create.html',
-		        controller:'ShipwreckCreateController'
+		        controller:'PautaController'
 		    }).state('editShipwreck',{
 		        url:'/shipwrecks/:id/edit',
 		        templateUrl: 'views/shipwreck-edit.html',
