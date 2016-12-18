@@ -1,11 +1,3 @@
-// app = angular.module('MySimpleEditor', ['textAngular']);
-//
-// app.controller('MyController', ['$scope', function($scope){
-//     $scope.sample = 'Shout out from the javascript!';
-//     $scope.htmlContent = '<h2>Testing Content</h2>'
-// }]);
-
-
 angular.module('pauta.controllers', ['textAngular']).controller('PautaController', function($scope, $state, $stateParams, popupService, $window, $http) {
 
   $scope.getPautas = function () {
@@ -15,9 +7,6 @@ angular.module('pauta.controllers', ['textAngular']).controller('PautaController
   };
 
   $scope.addPauta = function() {
-
-    console.log($scope.pauta);
-
     $http.post('pauta/v1/pautas', $scope.pauta).success(function() {
       $state.go('pautas');
     });
@@ -26,11 +15,10 @@ angular.module('pauta.controllers', ['textAngular']).controller('PautaController
   $scope.getPauta = function() {
     $http.get("pauta/v1/pautas/" + $stateParams.id).success(function (data) {
       $scope.pauta = data;
-      $scope.htmlContent = $scope.pauta.arquivo;
     })
   }
 
-  $scope.deletePauta = function(pauta) { // Delete a Shipwreck. Issues a DELETE to /api/v1/shipwrecks/:id
+  $scope.deletePauta = function(pauta) {
     if (popupService.showPopup('Quer realmente deletar?')) {
         $http.delete("pauta/v1/pautas/" + pauta.id).success(function(){
         $state.reload();
@@ -38,7 +26,17 @@ angular.module('pauta.controllers', ['textAngular']).controller('PautaController
     }
   }
 
-  $scope.editPauta = function() { //Update the edited shipwreck. Issues a PUT to /api/v1/shipwrecks/:id
+  $scope.gerarPDF = function(pauta) {
+    $http.get("pauta/v1/pautas/" + pauta.id).success(function (data) {
+      $scope.pauta = data;
+      var doc = new jsPDF();
+      doc.fromHTML($scope.pauta.arquivo, 15, 15,{'width': 170});
+      doc.save($scope.pauta.titulo + '.pdf');
+    });
+  }
+
+  $scope.editPauta = function() {
+    console.log($scope.pauta.arquivo)
     $http.put('pauta/v1/pautas/' + $scope.pauta.id, $scope.pauta).success(function() {
       $state.go('pautas');
     });

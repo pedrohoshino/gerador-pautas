@@ -18,7 +18,7 @@ angular.module('item.controllers', []).controller('ItemController', function($sc
     })
   }
 
-  $scope.deleteItem = function(item) { // Delete a Shipwreck. Issues a DELETE to /api/v1/shipwrecks/:id
+  $scope.deleteItem = function(item) {
     if (popupService.showPopup('Quer realmente deletar?')) {
         $http.delete("item/v1/itens/" + item.id).success(function(){
         $state.reload();
@@ -26,7 +26,7 @@ angular.module('item.controllers', []).controller('ItemController', function($sc
     }
   }
 
-  $scope.editItem = function(item) { //Update the edited shipwreck. Issues a PUT to /api/v1/shipwrecks/:id
+  $scope.editItem = function(item) {
     $http.put('item/v1/itens/' + item.id, item).success(function() {
       $state.go('itens');
     });
