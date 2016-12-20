@@ -1,21 +1,31 @@
 <div class="container pad-top">
-  <a ui-sref="newReuniao" class="btn-primary btn-lg nodecoration">Criar nova Reunião</a>
-  <table class="table simpletable">
+  <table class="table simpletable" ng-init="getReunioes()">
+  <div>
+      <h1 class="table-title">Todas as Reunioes</h1>
+  </div>
+    <thead>
       <tr>
-          <td><h3>Todas as Reuniões</h3></td>
-          <td></td>
+        <th>Titulo</th>
+        <th>Descição</th>
+        <th>Data</th>
+        <th>Ações</th>
       </tr>
-      <!--<tr ng-repeat="shipwreck in shipwrecks">
-          <td>{{shipwreck.name}}</td>
-          <td>{{shipwreck.description}}</td>
-          <td>{{shipwreck.yearDiscovered}}</td>
-          <td>
-              <a class="btn btn-primary" ui-sref="viewShipwreck({id:shipwreck.id})">View</a>
-              <a class="btn btn-danger"  ng-click="deleteShipwreck(shipwreck)">Delete</a>
+    </thead>
+    <tbody>
+      <tr ng-repeat="reuniao in reunioes">
+          <td style="width: 25%; word-wrap:break-word;">{{reuniao.titulo}}</td>
+          <td style="width: 35%; word-wrap:break-word;">{{reuniao.descricao}}</td>
+          <td style="width: 10%; word-wrap:break-word;">{{reuniao.data}}</td>
+          <td style="width: 30%;">
+              <a class="btn btn-primary" ui-sref="viewReuniao({id:reuniao.id})">View</a>
+              <a class="btn btn-primary" ui-sref="editReuniao({id:reuniao.id})">Edit</a>
+              <a class="btn btn-primary" ng-click="gerarPDF(reuniao)">Gerar PDF</a>
+              <a class="btn btn-danger"  ng-click="deleteReuniao(reuniao)">Delete</a>
           </td>
-      </tr>-->
+      </tr>
+    </tbody>
   </table>
-</div>
-<div class="container pad-top">
-	<h1>Em Construção</h1>
+  <div class="bottomButton">
+    <a ui-sref="newReuniao" class="btn-primary btn-lg nodecoration" >Criar nova Reuniao</a>
+  <div>
 </div>

@@ -13,10 +13,10 @@
       </thead>
       <tbody>
         <tr ng-repeat="item in itens">
-            <td style="max-width:100px; word-wrap:break-word;">{{item.titulo}}</td>
-            <td style="max-width:100px; word-wrap:break-word;">{{item.descricao}}</td>
-            <td style="max-width:100px; word-wrap:break-word;">{{item.situacao}}</td>
-            <td>
+            <td style="width: 20%; word-wrap:break-word;">{{item.titulo}}</td>
+            <td style="width: 52%; word-wrap:break-word;">{{item.descricao}}</td>
+            <td style="width: 10%; word-wrap:break-word;">{{item.situacao}}</td>
+            <td style="width: 18%;">
                 <a class="btn btn-primary" ui-sref="viewItem({id:item.id})">View</a>
                 <a class="btn btn-primary" ui-sref="editItem({id:item.id})">Edit</a>
                 <a class="btn btn-danger"  ng-click="deleteItem(item)">Delete</a>

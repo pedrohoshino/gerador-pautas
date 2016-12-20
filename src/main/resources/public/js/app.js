@@ -1,5 +1,5 @@
 (function() {
-	var app = angular.module('app', ['ui.router', 'navController', 'ngAnimate', 'ui.bootstrap', 'ngResource', 'app.controllers', 'app.services', 'item.controllers', 'pauta.controllers'])
+	var app = angular.module('app', ['ui.router', 'navController', 'ngAnimate', 'ui.bootstrap', 'ngResource', 'app.services', 'item.controllers', 'pauta.controllers', 'reuniao.controllers'])
 
 	// define for requirejs loaded modules
 	define('app', [], function() { return app; });
@@ -64,8 +64,21 @@
 			.state('reunioes',{
 				url:'/reunioes',
 				templateUrl: 'views/reunioes/reunioes.html',
-				controller:'ShipwreckListController'
+				controller:'ReuniaoController'
+			}).state('viewReuniao',{
+				 url:'/reunioes/:id/view',
+				 templateUrl: 'views/reunioes/reunioes-view.html',
+				 controller:'ReuniaoController'
+			}).state('newReuniao',{
+					url:'/reunioes/new',
+					templateUrl: 'views/reunioes/reunioes-create.html',
+					controller:'ReuniaoController'
+			}).state('editReuniao',{
+					url:'/reunioes/:id/edit',
+					templateUrl: 'views/reunioes/reunioes-edit.html',
+					controller:'ReuniaoController'
 			})
+
 
 			.state('atas',{
 				url:'/atas',

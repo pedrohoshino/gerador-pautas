@@ -1,0 +1,19 @@
+<div class="container pad-top">
+  <div ng-init="getReuniao()">
+    <table class="table simpletable">
+        <tr>
+            <td><h3>Detalhes da Reuniao: {{reuniao.titulo}}</h3></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Arquivo</td>
+        </tr>
+        <tr>
+            <td ta-bind text-angular ng-model="reuniao.arquivo"></td>
+        </tr>
+    </table>
+  </div>
+  <div>
+      <a class="btn btn-primary" ui-sref="editReuniao({id:reuniao.id})">Edit</a>
+  </div>
+</div>

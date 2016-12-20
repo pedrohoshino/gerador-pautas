@@ -13,10 +13,8 @@ public class ItemStub {
 	private static Long idIndex = 2L;
 
 	static {
-		Item a = new Item(1L, "Teste", "Teste", "Pendente");
+		Item a = new Item(1L, "Vida docente |Relatórios de atividade; Afastamentos; Perfis; Atividade Silmultânea|", "Relatório Periódico de Atividades do Prof. Fábio Usberti MS-3.1 em RDIDP referente ao período de junho/2013 a maio/2016. Parecer favorável CAA 043/2016. Deliberação favorável DTC 016/2016.", "Pendente");
 		itens.put(1L, a);
-		Item b = new Item(1L, "123", "123", "Aprovado");
-		itens.put(1L, b);
 	}
 
 	public static List<Item> list(){

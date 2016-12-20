@@ -23,9 +23,14 @@ angular.module('navController', [])
 				url: '#/reunioes'
 			},
 			{
+				name: 'Deliberações',
+				url: '#/deliberacoes'
+			},
+			{
 				name: 'Atas',
 				url: '#/atas'
 			},
+
 			{
 				name: 'Itens',
 				url: '#/itens'
