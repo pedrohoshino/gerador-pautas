@@ -1,0 +1,31 @@
+<div class="container pad-top">
+  <table class="table simpletable" ng-init="getDeliberacoes()">
+  <div>
+      <h1 class="table-title">Todas as Deliberacoes</h1>
+  </div>
+    <thead>
+      <tr>
+        <th>Titulo</th>
+        <th>Assunto</th>
+        <th>Data</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="deliberacao in deliberacoes">
+          <td style="width: 25%; word-wrap:break-word;">{{deliberacao.titulo}}</td>
+          <td style="width: 35%; word-wrap:break-word;">{{deliberacao.assunto}}</td>
+          <td style="width: 10%; word-wrap:break-word;">{{deliberacao.data}}</td>
+          <td style="width: 30%;">
+              <a class="btn btn-primary" ui-sref="viewDeliberacao({id:deliberacao.id})">View</a>
+              <a class="btn btn-primary" ui-sref="editDeliberacao({id:deliberacao.id})">Edit</a>
+              <a class="btn btn-primary" ng-click="gerarPDF(deliberacao)">Gerar PDF</a>
+              <a class="btn btn-danger"  ng-click="deleteDeliberacao(deliberacao)">Delete</a>
+          </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="bottomButton">
+    <a ui-sref="newDeliberacao" class="btn-primary btn-lg nodecoration" >Criar nova Deliberacao</a>
+  <div>
+</div>

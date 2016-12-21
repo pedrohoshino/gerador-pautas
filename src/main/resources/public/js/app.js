@@ -1,5 +1,5 @@
 (function() {
-	var app = angular.module('app', ['ui.router', 'navController', 'ngAnimate', 'ui.bootstrap', 'ngResource', 'app.services', 'item.controllers', 'pauta.controllers', 'reuniao.controllers'])
+	var app = angular.module('app', ['ui.router', 'navController', 'ngAnimate', 'ui.bootstrap', 'ngResource', 'app.services', 'item.controllers', 'pauta.controllers', 'reuniao.controllers', 'ata.controllers', 'deliberacao.controllers'])
 
 	// define for requirejs loaded modules
 	define('app', [], function() { return app; });
@@ -79,11 +79,40 @@
 					controller:'ReuniaoController'
 			})
 
+			.state('deliberacoes',{
+				url:'/deliberacoes',
+				templateUrl: 'views/deliberacoes/deliberacoes.html',
+				controller:'DeliberacaoController'
+			}).state('viewDeliberacao',{
+				 url:'/deliberacoes/:id/view',
+				 templateUrl: 'views/deliberacoes/deliberacoes-view.html',
+				 controller:'DeliberacaoController'
+			}).state('newDeliberacao',{
+					url:'/deliberacoes/new',
+					templateUrl: 'views/deliberacoes/deliberacoes-create.html',
+					controller:'DeliberacaoController'
+			}).state('editDeliberacao',{
+					url:'/deliberacoes/:id/edit',
+					templateUrl: 'views/deliberacoes/deliberacoes-edit.html',
+					controller:'DeliberacaoController'
+			})
 
 			.state('atas',{
 				url:'/atas',
 				templateUrl: 'views/atas/atas.html',
-				controller:'ShipwreckListController'
+				controller:'AtaController'
+			}).state('viewAta',{
+				 url:'/atas/:id/view',
+				 templateUrl: 'views/atas/atas-view.html',
+				 controller:'AtaController'
+			}).state('newAta',{
+					url:'/atas/new',
+					templateUrl: 'views/atas/atas-create.html',
+					controller:'AtaController'
+			}).state('editAta',{
+					url:'/atas/:id/edit',
+					templateUrl: 'views/atas/atas-edit.html',
+					controller:'AtaController'
 			})
 
 			.state('itens',{
@@ -104,17 +133,17 @@
 				controller:'ItemController'
 			})
 
-			.state('participantes',{
-				url:'/participantes',
-				templateUrl: 'views/participantes/participantes.html',
-				controller:'ShipwreckListController'
-			})
-
-			.state('arquivos',{
-				url:'/arquivos',
-				templateUrl: 'views/arquivos/arquivos.html',
-				controller:'ShipwreckListController'
-			})
+			// .state('participantes',{
+			// 	url:'/participantes',
+			// 	templateUrl: 'views/participantes/participantes.html',
+			// 	controller:'ShipwreckListController'
+			// })
+			//
+			// .state('arquivos',{
+			// 	url:'/arquivos',
+			// 	templateUrl: 'views/arquivos/arquivos.html',
+			// 	controller:'ShipwreckListController'
+			// })
 	})
 	.directive('updateTitle', ['$rootScope', '$timeout',
 		function($rootScope, $timeout) {

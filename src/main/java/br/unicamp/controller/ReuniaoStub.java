@@ -32,9 +32,9 @@ public class ReuniaoStub {
 		return reunioes.get(id);
 	}
 
-	public static Reuniao update(Long id, Reuniao item) {
-		reunioes.put(id, item);
-		return item;
+	public static Reuniao update(Long id, Reuniao reuniao) {
+		reunioes.put(id, reuniao);
+		return reuniao;
 	}
 
 	public static Reuniao delete(Long id) {

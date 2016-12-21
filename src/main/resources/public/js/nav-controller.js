@@ -34,14 +34,14 @@ angular.module('navController', [])
 			{
 				name: 'Itens',
 				url: '#/itens'
-			},
-			{
-				name: 'Participantes',
-				url: '#/participantes'
-			},
-			{
-				name: 'Arquivos',
-				url: '#/arquivos'
 			}
+			// ,{
+			// 	name: 'Participantes',
+			// 	url: '#/participantes'
+			// },
+			// {
+			// 	name: 'Arquivos',
+			// 	url: '#/arquivos'
+			// }
 		]
 	});

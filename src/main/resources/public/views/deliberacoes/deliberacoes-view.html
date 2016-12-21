@@ -1,0 +1,16 @@
+<div class="container pad-top">
+  <div ng-init="getDeliberacao()">
+    <table class="table simpletable">
+        <tr>
+            <td><h3>Detalhes da Deliberacao: {{deliberacao.titulo}}</h3></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td ta-bind text-angular ng-model="deliberacao.arquivo"></td>
+        </tr>
+    </table>
+  </div>
+  <div>
+      <a class="btn btn-primary" ui-sref="editDeliberacao({id:deliberacao.id})">Edit</a>
+  </div>
+</div>

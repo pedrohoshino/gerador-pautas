@@ -1,0 +1,16 @@
+<div class="container pad-top">
+  <div ng-init="getAta()">
+    <table class="table simpletable">
+        <tr>
+            <td><h3>Detalhes da Ata: {{ata.titulo}}</h3></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td ta-bind text-angular ng-model="ata.arquivo"></td>
+        </tr>
+    </table>
+  </div>
+  <div>
+      <a class="btn btn-primary" ui-sref="editAta({id:ata.id})">Edit</a>
+  </div>
+</div>
