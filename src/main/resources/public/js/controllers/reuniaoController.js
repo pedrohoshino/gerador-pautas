@@ -6,10 +6,21 @@ angular.module('reuniao.controllers', ['textAngular']).controller('ReuniaoContro
     });
   };
 
+  $scope.criaHeader = function(){
+    $scope.reuniao.header ="<blockquote><blockquote><h6><b>DE ORDEM, CONVOCAMOS OS MEMBROS DA CONGREGAÇÃO DO INSTITUTO DE COMPUTAÇÃO PARA A " + $scope.reuniao.titulo.toUpperCase() + " DA CONGREGAÇÃO, A REALIZAR-SE DIA " + $scope.reuniao.data + ", ÀS " + $scope.reuniao.hora + ",NA SALA " + $scope.reuniao.local + " DO INSTITUTO DE COMPUTAÇÃO.</b></h6></blockquote></blockquote>";
+  }
+
   $scope.addReuniao = function() {
+    $scope.criaHeader();
+    $scope.reuniao.arquivo = $scope.reuniao.header;
     $http.post('reuniao/v1/reunioes', $scope.reuniao).success(function() {
       $state.go('reunioes');
     });
+  };
+
+  $scope.previewReuniao = function() {
+    $scope.criaHeader();
+    $scope.reuniao.vizualizar = $scope.reuniao.header;
   };
 
   $scope.getReuniao = function() {
@@ -37,6 +48,8 @@ angular.module('reuniao.controllers', ['textAngular']).controller('ReuniaoContro
 
   $scope.editReuniao = function() {
     console.log($scope.reuniao.arquivo)
+    $scope.criaHeader();
+    $scope.reuniao.arquivo = $scope.reuniao.header;
     $http.put('reuniao/v1/reunioes/' + $scope.reuniao.id, $scope.reuniao).success(function() {
       $state.go('reunioes');
     });

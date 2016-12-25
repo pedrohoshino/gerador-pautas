@@ -1,0 +1,21 @@
+<div class="container pad-top">
+  <div ng-init="getCategoria()">
+    <table class="table simpletable">
+        <tr>
+            <td><h3>Details for {{categoria.titulo}}</h3></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Titulo</td>
+            <td>{{categoria.titulo}}</td>
+        </tr>
+        <tr>
+            <td>Descrição</td>
+            <td>{{categoria.descricao}}</td>
+        </tr>
+    </table>
+  </div>
+  <div>
+      <a class="btn btn-primary" ui-sref="editCategoria({id:categoria.id})">Edit</a>
+  </div>
+</div>

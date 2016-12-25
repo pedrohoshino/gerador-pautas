@@ -6,25 +6,20 @@
       <thead>
         <tr>
           <th>Titulo</th>
+          <th>Categoria</th>
           <th>Descição</th>
           <th>Situação</th>
-          <th>Ações</th>
+          <th>Arquivos</th>
         </tr>
       </thead>
       <tbody>
         <tr ng-repeat="item in itens">
-            <td style="width: 20%; word-wrap:break-word;">{{item.titulo}}</td>
-            <td style="width: 52%; word-wrap:break-word;">{{item.descricao}}</td>
+            <td style="width: 15%; word-wrap:break-word;">{{item.titulo}}</td>
+            <td style="width: 15%; word-wrap:break-word;">{{item.categoria}}</td>
+            <td style="width: 40%; word-wrap:break-word;">{{item.descricao}}</td>
             <td style="width: 10%; word-wrap:break-word;">{{item.situacao}}</td>
-            <td style="width: 18%;">
-                <a class="btn btn-primary" ui-sref="viewItem({id:item.id})">View</a>
-                <a class="btn btn-primary" ui-sref="editItem({id:item.id})">Edit</a>
-                <a class="btn btn-danger"  ng-click="deleteItem(item)">Delete</a>
-            </td>
+            <td style="width: 18%; word-wrap:break-word;">{{item.arquivos}}</td>
         </tr>
       </tbody>
   </table>
-  <div class="bottomButton">
-    <a ui-sref="newItem" class="btn-primary btn-lg nodecoration" >Criar novo Item</a>
-  <div>
 </div>

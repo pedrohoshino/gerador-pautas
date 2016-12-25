@@ -15,10 +15,6 @@ angular.module('navController', [])
 				url: '#/'
 			},
 			{
-				name: 'Pautas',
-				url: '#/pautas'
-			},
-			{
 				name: 'Reunioes',
 				url: '#/reunioes'
 			},
@@ -34,11 +30,15 @@ angular.module('navController', [])
 			{
 				name: 'Itens',
 				url: '#/itens'
-			}
-			// ,{
-			// 	name: 'Participantes',
-			// 	url: '#/participantes'
-			// },
+			},
+			{
+				name: 'Categorias',
+				url: '#/categorias'
+			},
+			{
+				name: 'Participantes',
+				url: '#/participantes'
+			}//,
 			// {
 			// 	name: 'Arquivos',
 			// 	url: '#/arquivos'

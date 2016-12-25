@@ -5,20 +5,21 @@
   </div>
     <thead>
       <tr>
-        <th>Titulo</th>
-        <th>Descição</th>
         <th>Data</th>
+        <th>Hora</th>
+        <th>Titulo</th>
         <th>Ações</th>
       </tr>
     </thead>
     <tbody>
       <tr ng-repeat="reuniao in reunioes">
-          <td style="width: 25%; word-wrap:break-word;">{{reuniao.titulo}}</td>
-          <td style="width: 35%; word-wrap:break-word;">{{reuniao.descricao}}</td>
           <td style="width: 10%; word-wrap:break-word;">{{reuniao.data}}</td>
-          <td style="width: 30%;">
-              <a class="btn btn-primary" ui-sref="viewReuniao({id:reuniao.id})">View</a>
-              <a class="btn btn-primary" ui-sref="editReuniao({id:reuniao.id})">Edit</a>
+          <td style="width: 10%; word-wrap:break-word;">{{reuniao.hora}}</td>
+          <td style="width: 30%; word-wrap:break-word;">{{reuniao.titulo}}</td>
+          <td style="width: 50%;">
+              <a class="btn btn-primary" ui-sref="editReuniao({id:reuniao.id})">Editar Reunião</a>
+              <a class="btn btn-primary" ui-sref="editPauta({id:reuniao.id})">Editar Pauta</a>
+              <a class="btn btn-primary" ui-sref="editParticipante({id:reuniao.id})">Editar Participantes</a>
               <a class="btn btn-primary" ng-click="gerarPDF(reuniao)">Gerar PDF</a>
               <a class="btn btn-danger"  ng-click="deleteReuniao(reuniao)">Delete</a>
           </td>

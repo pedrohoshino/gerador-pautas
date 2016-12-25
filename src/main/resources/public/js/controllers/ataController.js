@@ -8,6 +8,7 @@ angular.module('ata.controllers', ['textAngular']).controller('AtaController', f
 
   $scope.addAta = function() {
     $http.post('ata/v1/atas', $scope.ata).success(function() {
+      console.log($scope.ata.arquivo)
       $state.go('atas');
     });
   };
@@ -30,7 +31,14 @@ angular.module('ata.controllers', ['textAngular']).controller('AtaController', f
     $http.get("ata/v1/atas/" + ata.id).success(function (data) {
       $scope.ata = data;
       var doc = new jsPDF();
-      doc.fromHTML($scope.ata.arquivo, 15, 15,{'width': 170});
+
+      var specialElementHandlers = {
+      	'#editor': function(element, renderer){
+      		return true;
+      	}
+      };
+
+      doc.fromHTML($scope.ata.arquivo, 15, 15,{'width': 170, 'elementHandlers': specialElementHandlers });
       doc.save($scope.ata.titulo + '.pdf');
     });
   }

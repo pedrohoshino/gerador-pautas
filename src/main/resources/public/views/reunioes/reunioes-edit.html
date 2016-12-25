@@ -10,18 +10,6 @@
           </div>
       </div>
       <div class="form-group">
-          <label for="description" class="col-sm-2 control-label">Descrição</label>
-          <div class="col-sm-10">
-              <input type="text" ng-model="reuniao.descricao" class="form-control" id="descricao" placeholder="Descrição da Reuniao"/>
-          </div>
-      </div>
-      <div class="form-group">
-          <label for="description" class="col-sm-2 control-label">Local</label>
-          <div class="col-sm-10">
-              <input type="text" ng-model="reuniao.local" class="form-control" id="local" placeholder="Local da Reuniao"/>
-          </div>
-      </div>
-      <div class="form-group">
           <label for="description" class="col-sm-2 control-label">Data</label>
           <div class="col-sm-10">
               <input type="text" ng-model="reuniao.data" class="form-control" id="data" placeholder="Data da Reuniao"/>
@@ -33,10 +21,18 @@
               <input type="text" ng-model="reuniao.hora" class="form-control" id="data" placeholder="Horario da Reuniao"/>
           </div>
       </div>
-      <div text-angular ng-model="reuniao.arquivo"></div>
+      <div class="form-group">
+          <label for="description" class="col-sm-2 control-label">Local</label>
+          <div class="col-sm-10">
+              <input type="text" ng-model="reuniao.local" class="form-control" id="local" placeholder="Numero da sala"/>
+          </div>
+      </div>
+
+      <div ta-bind text-angular ng-model="reuniao.vizualizar"></div>
 
 
       <div>
+          <a class="btn btn-primary" ng-click="previewReuniao()">Vizualizar</a>
           <input type="submit" class="btn btn-primary" value="Save"/>
       </div>
     </form>

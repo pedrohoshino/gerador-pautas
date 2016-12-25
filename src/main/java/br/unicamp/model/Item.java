@@ -1,5 +1,7 @@
 package br.unicamp.model;
 
+import java.sql.Blob;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,17 +14,44 @@ public class Item {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	Long id;
 	String titulo;
+	Long categoria;
 	String descricao;
 	String situacao;
+	Blob arquivos;
 
 	public Item() {
 	}
-
+	
 	public Item(Long id, String titulo, String descricao, String situacao) {
 		this.id = id;
 		this.titulo = titulo;
 		this.descricao = descricao;
 		this.situacao = situacao;
+	}
+
+	public Item(Long id, String titulo, Long categoria, String descricao, String situacao, Blob arquivos) {
+		this.id = id;
+		this.titulo = titulo;
+		this.categoria = categoria;
+		this.descricao = descricao;
+		this.situacao = situacao;
+		this.arquivos = arquivos;
+	}
+
+	public Long getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(Long categoria) {
+		this.categoria = categoria;
+	}
+
+	public Blob getArquivos() {
+		return arquivos;
+	}
+
+	public void setArquivos(Blob arquivos) {
+		this.arquivos = arquivos;
 	}
 
 	public String getDescricao() {

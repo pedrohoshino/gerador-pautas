@@ -1,0 +1,28 @@
+<div class="container pad-top">
+  <table class="table simpletable" ng-init="getCategorias()">
+      <div>
+          <h1 class="table-title">Todos as Categorias de Item</h1>
+      </div>
+      <thead>
+        <tr>
+          <th>Titulo</th>
+          <th>Descição</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="categoria in categorias">
+            <td style="width: 40%; word-wrap:break-word;">{{categoria.titulo}}</td>
+            <td style="width: 40%; word-wrap:break-word;">{{categoria.descricao}}</td>
+            <td style="width: 20%">
+                <a class="btn btn-primary" ui-sref="viewCategoria({id:categoria.id})">View</a>
+                <a class="btn btn-primary" ui-sref="editCategoria({id:categoria.id})">Edit</a>
+                <a class="btn btn-danger"  ng-click="deleteCategoria(categoria)">Delete</a>
+            </td>
+        </tr>
+      </tbody>
+  </table>
+  <div class="bottomButton">
+    <a ui-sref="newCategoria" class="btn-primary btn-lg nodecoration" >Criar nova Categoria</a>
+  <div>
+</div>

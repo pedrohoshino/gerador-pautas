@@ -1,5 +1,5 @@
 (function() {
-	var app = angular.module('app', ['ui.router', 'navController', 'ngAnimate', 'ui.bootstrap', 'ngResource', 'app.services', 'item.controllers', 'pauta.controllers', 'reuniao.controllers', 'ata.controllers', 'deliberacao.controllers'])
+	var app = angular.module('app', ['ui.router', 'navController', 'ngAnimate', 'ui.bootstrap', 'ngResource', 'app.services', 'item.controllers', 'pauta.controllers', 'reuniao.controllers', 'ata.controllers', 'deliberacao.controllers', 'categoria.controllers'])
 
 	// define for requirejs loaded modules
 	define('app', [], function() { return app; });
@@ -119,26 +119,36 @@
 				url:'/itens',
 				templateUrl: 'views/itens/itens.html',
 				controller:'ItemController'
-			}).state('newItem',{
-        url:'/itens/new',
-        templateUrl: 'views/itens/itens-create.html',
-        controller:'ItemController'
 			}).state('viewItem',{
         url:'/itens/:id/view',
         templateUrl: 'views/itens/itens-view.html',
         controller:'ItemController'
-			}).state('editItem',{
-				url:'/itens/:id/edit',
-				templateUrl: 'views/itens/itens-edit.html',
-				controller:'ItemController'
 			})
 
-			// .state('participantes',{
-			// 	url:'/participantes',
-			// 	templateUrl: 'views/participantes/participantes.html',
-			// 	controller:'ShipwreckListController'
-			// })
-			//
+			.state('categorias',{
+				url:'/categorias',
+				templateUrl: 'views/categorias/categorias.html',
+				controller:'CategoriaController'
+			}).state('viewCategoria',{
+				 url:'/categorias/:id/view',
+				 templateUrl: 'views/categorias/categorias-view.html',
+				 controller:'CategoriaController'
+			}).state('newCategoria',{
+					url:'/categorias/new',
+					templateUrl: 'views/categorias/categorias-create.html',
+					controller:'CategoriaController'
+			}).state('editCategoria',{
+					url:'/categorias/:id/edit',
+					templateUrl: 'views/categorias/categorias-edit.html',
+					controller:'CategoriaController'
+			})
+
+			.state('participantes',{
+				url:'/participantes',
+				templateUrl: 'views/participantes/participantes.html',
+				controller:'ShipwreckListController'
+			})
+
 			// .state('arquivos',{
 			// 	url:'/arquivos',
 			// 	templateUrl: 'views/arquivos/arquivos.html',

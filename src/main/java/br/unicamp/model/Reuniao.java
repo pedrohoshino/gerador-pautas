@@ -59,7 +59,7 @@ public class Reuniao {
 		return titulo;
 	}
 
-	public void setArquivo(String arquivo) {
+	public void setArquivo(String arquivo){
 		this.arquivo = arquivo;
 	}
 
