@@ -10,8 +10,15 @@ import br.unicamp.model.Participante;
 public class ParticipanteStub {
 
 	private static Map<Long, Participante> participantes = new HashMap<Long, Participante>();
-	private static Long idIndex = 6L;
-	
+	private static Long idIndex = 3L;
+
+	static {
+		Participante a = new Participante(1L, "Ricardo", "Torres", "rtorres@unicamp.br", "", "1234", "Docente");
+		participantes.put(1L, a);
+		Participante b = new Participante(2L, "Pedro Yukio", "Hoshino", "p139718@unicamp.br", "", "139718", "Dicente");
+		participantes.put(2L, b);
+	}
+
 	public static List<Participante> list(){
 		return new ArrayList<Participante>(participantes.values());
 	}

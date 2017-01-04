@@ -77,6 +77,10 @@
 					url:'/reunioes/:id/edit',
 					templateUrl: 'views/reunioes/reunioes-edit.html',
 					controller:'ReuniaoController'
+			}).state('editReuniaoParticipantes',{
+					url:'/reunioes/:id/edit',
+					templateUrl: 'views/reunioes/reunioes-participantes-edit.html',
+					controller:'ReuniaoController'
 			})
 
 			.state('deliberacoes',{
