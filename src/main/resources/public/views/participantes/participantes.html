@@ -1,21 +1,28 @@
 <div class="container pad-top">
-  <a ui-sref="newParticipante" class="btn-primary btn-lg nodecoration">Adicionar novo Participante</a>
-  <table class="table simpletable">
-      <tr>
-          <td><h3>Todos os Participantes</h3></td>
-          <td></td>
-      </tr>
-      <!--<tr ng-repeat="shipwreck in shipwrecks">
-          <td>{{shipwreck.name}}</td>
-          <td>{{shipwreck.description}}</td>
-          <td>{{shipwreck.yearDiscovered}}</td>
-          <td>
-              <a class="btn btn-primary" ui-sref="viewShipwreck({id:shipwreck.id})">View</a>
-              <a class="btn btn-danger"  ng-click="deleteShipwreck(shipwreck)">Delete</a>
-          </td>
-      </tr>-->
+  <table class="table simpletable" ng-init="getParticipantes()">
+      <div>
+          <h1 class="table-title">Todos os Participantes</h1>
+      </div>
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Matricula</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="participante in participantes">
+            <td style="width: 40%; word-wrap:break-word;">{{participante.nome}}</td>
+            <td style="width: 40%; word-wrap:break-word;">{{participante.matricula}}</td>
+            <td style="width: 20%">
+                <a class="btn btn-primary" ui-sref="viewParticipante({id:participante.id})">View</a>
+                <a class="btn btn-primary" ui-sref="editParticipante({id:participante.id})">Edit</a>
+                <a class="btn btn-danger"  ng-click="deleteParticipante(participante)">Delete</a>
+            </td>
+        </tr>
+      </tbody>
   </table>
-</div>
-<div class="container pad-top">
-	<h1>Em Construção</h1>
+  <div class="bottomButton">
+    <a ui-sref="newParticipante" class="btn-primary btn-lg nodecoration" >Criar novo Participante</a>
+  <div>
 </div>

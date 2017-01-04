@@ -1,5 +1,5 @@
 (function() {
-	var app = angular.module('app', ['ui.router', 'navController', 'ngAnimate', 'ui.bootstrap', 'ngResource', 'app.services', 'item.controllers', 'pauta.controllers', 'reuniao.controllers', 'ata.controllers', 'deliberacao.controllers', 'categoria.controllers'])
+	var app = angular.module('app', ['ui.router', 'navController', 'ngAnimate', 'ui.bootstrap', 'ngResource', 'app.services', 'item.controllers', 'pauta.controllers', 'reuniao.controllers', 'ata.controllers', 'deliberacao.controllers', 'categoria.controllers', 'participante.controllers'])
 
 	// define for requirejs loaded modules
 	define('app', [], function() { return app; });
@@ -146,7 +146,19 @@
 			.state('participantes',{
 				url:'/participantes',
 				templateUrl: 'views/participantes/participantes.html',
-				controller:'ShipwreckListController'
+				controller:'ParticipanteController'
+			}).state('viewParticipante',{
+				 url:'/participantes/:id/view',
+				 templateUrl: 'views/participantes/participantes-view.html',
+				 controller:'ParticipanteController'
+			}).state('newParticipante',{
+					url:'/participantes/new',
+					templateUrl: 'views/participantes/participantes-create.html',
+					controller:'ParticipanteController'
+			}).state('editParticipante',{
+					url:'/participantes/:id/edit',
+					templateUrl: 'views/participantes/participantes-edit.html',
+					controller:'ParticipanteController'
 			})
 
 			// .state('arquivos',{

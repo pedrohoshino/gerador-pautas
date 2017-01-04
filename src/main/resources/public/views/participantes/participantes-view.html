@@ -1,0 +1,37 @@
+<div class="container pad-top">
+  <div ng-init="getParticipante()">
+    <table class="table simpletable">
+        <tr>
+            <td><h3>Details for {{participante.nome}}</h3></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Nome</td>
+            <td>{{participante.nome}}</td>
+        </tr>
+        <tr>
+            <td>Sobrenome</td>
+            <td>{{participante.sobrenome}}</td>
+        </tr>
+        <tr>
+            <td>E-mail</td>
+            <td>{{participante.e_mail}}</td>
+        </tr>
+        <tr>
+            <td>Titular</td>
+            <td>{{participante.titular}}</td>
+        </tr>
+        <tr>
+            <td>Matricula</td>
+            <td>{{participante.matricula}}</td>
+        </tr>
+        <tr>
+            <td>Tipo</td>
+            <td>{{participante.tipo}}</td>
+        </tr>
+    </table>
+  </div>
+  <div>
+      <a class="btn btn-primary" ui-sref="editParticipante({id:participante.id})">Edit</a>
+  </div>
+</div>
