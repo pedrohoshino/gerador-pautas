@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import br.unicamp.model.Ata;
-import br.unicamp.model.Categoria;
 
 public interface AtaRepository extends JpaRepository<Ata, Long> {
 

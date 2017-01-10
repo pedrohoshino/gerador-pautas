@@ -1,60 +1,70 @@
 package br.unicamp.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="usuario")
 public class Usuario {
 	
 	@Id
+	@Column(name="idusuario")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	Long id;
-	String nome;
-	String cargo;
-	String registro;
+	private Long id;
+	
+	@Column(name="login")
+	private String login;
+	
+	@Column(name="senha")
+	private String senha;
+	
+	@Column(name="tipo")
+	private String tipo;
 	
 	public Usuario(){
 	}
 	
-	public Usuario(Long id, String nome, String cargo, String registro){
+	public Usuario(Long id, String login, String senha, String tipo){
 		this.id =id;
-		this.nome = nome;
-		this.cargo = cargo;
-		this.registro = registro;
+		this.login = login;
+		this.senha = senha;
+		this.tipo = tipo;
 	}
 
-	public String getCargo() {
-		return cargo;
+	public String getTipo() {
+		return this.tipo;
 	}
 
 	public Long getId() {
-		return id;
+		return this.id;
 	}
 
-	public String getNome() {
-		return nome;
+	public String getLogin() {
+		return this.login;
 	}
 
-	public String getRegistro() {
-		return registro;
+	public String getSenha() {
+		return this.senha;
 	}
 
-	public void setCargo(String cargo) {
-		this.cargo = cargo;
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
 
 	public void setId(Long id) {
 		this.id = id;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setLogin(String login) {
+		this.login = login;
 	}
 
-	public void setRegistro(String registro) {
-		this.registro = registro;
+	public void setSennha(String senha) {
+		this.senha = senha;
 	}
 
 }

@@ -1,12 +1,13 @@
 package br.unicamp.model;
 
+import java.sql.Clob;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 @Entity
@@ -18,11 +19,6 @@ public class Ata {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long idata;
 	
-	@ManyToOne
-    @PrimaryKeyJoinColumn(name="idreuniao", referencedColumnName="idreuniao")
-    private Reuniao idreuniao;
-	
-	
 	@Column(name="titulo")
 	private String titulo;
 	
@@ -30,18 +26,23 @@ public class Ata {
 	private String descricao;
 	
 	@Column(name="data")
-	String data;
+	private String data;
 	
 	@Column(name="texto")
-	String texto;
+	//private Clob texto;
+	private String texto;
+	
+	@ManyToOne
+    private Reuniao reuniao;
+	
+	
 
 	public Ata(){
 
 	}
 
-	public Ata(Long idAta, Reuniao idReuniao, String titulo, String descricao, String data, String texto) {
+	public Ata(Long idAta, String titulo, String descricao, String data, String texto) {
 		this.idata = idAta;
-		this.idreuniao = idReuniao;
 		this.titulo = titulo;
 		this.descricao = descricao;
 		this.data = data;
@@ -86,5 +87,13 @@ public class Ata {
 
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
+	}
+	
+	public Reuniao getReuniao(){
+		return reuniao;
+	}
+	
+	public void setReuniao(Reuniao reuniao){
+		this.reuniao = reuniao;
 	}
 }
