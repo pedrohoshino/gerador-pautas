@@ -6,7 +6,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 @Entity
@@ -17,10 +16,6 @@ public class Participante {
 	@Column(name="idparticipante")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
-	@OneToOne
-    @PrimaryKeyJoinColumn(name="idusuario", referencedColumnName="idusuario")
-    private Usuario idusuario;
 	
 	@Column(name="nome")
 	private String nome;
@@ -40,13 +35,19 @@ public class Participante {
 	@Column(name="tipo")
 	private String tipo;
 
+	@OneToOne
+    private Usuario usuario;
+	
+	
+	/*@ManyToMany(targetEntity=Reuniao.class)
+	private Set<Reuniao> reuniaoSet;*/
+	
 	public Participante() {
 	}
 
-	public Participante(Long idparticipante, String nome, String sobrenome, String e_mail, String titular, String matricula,
-			String tipo, Usuario idusuario) {
-		this.id = idparticipante;
-		this.idusuario = idusuario;
+	public Participante(Long id, String nome, String sobrenome, String e_mail, String titular, String matricula,
+			String tipo) {
+		this.id = id;
 		this.nome = nome;
 		this.sobrenome = sobrenome;
 		this.e_mail = e_mail;
@@ -55,17 +56,17 @@ public class Participante {
 		this.tipo = tipo;
 	}
 	
-	public Participante(Long idparticipante, String nome, String sobrenome, String e_mail, String titular, String matricula,
-			String tipo) {
-		this.id = idparticipante;
-		this.idusuario = null;
+	/*public Participante(Long id, String nome, String sobrenome, String e_mail, String titular, String matricula,
+			String tipo, Set<Reuniao> reunioes) {
+		this.id = id;
 		this.nome = nome;
 		this.sobrenome = sobrenome;
 		this.e_mail = e_mail;
 		this.titular = titular;
 		this.matricula = matricula;
 		this.tipo = tipo;
-	}
+		this.reuniaoSet = reunioes;
+	}*/
 	
 	
 
@@ -125,14 +126,23 @@ public class Participante {
 		this.titular = titular;
 	}
 	
-	public Usuario getIdUsuario() {
-		return this.idusuario;
+	public Usuario getUsuario() {
+		return this.usuario;
 	}
 
 
-	public void setIdUsuario(Usuario idusuario) {
-		this.idusuario = idusuario;
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
+	
+	/*public Set<Reuniao> getReuniaoSet() {
+		return reuniaoSet;
+	}
+	
+	public void setReunioSet(Set<Reuniao> reunioes) {
+	      this.reuniaoSet = reunioes;
+	}*/
+
 	
 
 }

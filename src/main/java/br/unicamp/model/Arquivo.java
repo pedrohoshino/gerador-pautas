@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -30,6 +31,10 @@ public class Arquivo {
 	@Column(name="arquivo")
 	private Blob arquivo;
 
+	@ManyToOne
+    private Item item;
+	
+	
 	public Arquivo(){
 
 	}
@@ -80,5 +85,12 @@ public class Arquivo {
 		this.arquivo = arquivo;
 	}
 
+	public Item getItem(){
+		return item;
+	}
+	
+	public void setItem(Item item){
+		this.item = item;
+	}
 
 }

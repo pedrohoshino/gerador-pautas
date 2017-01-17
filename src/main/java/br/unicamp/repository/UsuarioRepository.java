@@ -8,7 +8,7 @@ import br.unicamp.model.Usuario;
 
 public interface UsuarioRepository extends JpaRepository<Usuario, Long>{
 	
-List<Usuario> findAll();
+	List<Usuario> findAll();
 	
 	Usuario findOne(Long id);
 	
