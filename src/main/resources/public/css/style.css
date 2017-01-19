@@ -2,6 +2,10 @@ body {
   padding-top: 20px;
 }
 
+.inLine {
+    display:inline;
+}
+
 .wide {
     text-align:left;
     font-weight:bold;

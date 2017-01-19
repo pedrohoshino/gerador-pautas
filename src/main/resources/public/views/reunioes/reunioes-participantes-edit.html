@@ -1,0 +1,68 @@
+<div>
+  <div class="container pad-top" ng-init="getReuniao()">
+    <form class="form-horizontal" role="form">
+      <h1 ng-init="getParticipantes()">Paticipantes</h1>
+
+      <h3>Presidente</h3>
+      <button ng-click="addNewPresidente()">Adicionar</button>
+      <div class="form-group">
+              <div class="col-sm-10">
+                  <fieldset  data-ng-repeat="presidente in presidentes">
+                     <select class="form-control" ng-model="reuniaoPresidente[$index]" ng-options="rParticipante as rParticipante.nome for rParticipante in rParticipantes track by rParticipante.id"></select>
+                     <button ng-show="$last" ng-click="removePresidente()">Remover</button>
+                  </fieldset>
+              </div>
+      </div>
+      <hr>
+      <h3>Membros</h3>
+      <hr>
+      <h4>Docentes</h4>
+      <button ng-click="addNewDocente()">Adicionar</button>
+      <div class="form-group">
+              <div class="col-sm-10">
+                  <fieldset  data-ng-repeat="docente in docentes">
+                     <select class="form-control" ng-model="reuniaoDocente[$index]" ng-options="rParticipante as rParticipante.nome for rParticipante in rParticipantes track by rParticipante.id"></select>
+                     <button ng-show="$last" ng-click="removeDocente()">Remover</button>
+                  </fieldset>
+              </div>
+      </div>
+      <hr>
+      <h4>Dicentes</h4>
+      <button ng-click="addNewDicente()">Adicionar</button>
+      <div class="form-group">
+              <div class="col-sm-10">
+                  <fieldset  data-ng-repeat="dicente in dicentes">
+                     <select class="form-control" ng-model="reuniaoDicente[$index]" ng-options="rParticipante as rParticipante.nome for rParticipante in rParticipantes track by rParticipante.id"></select>
+                     <button ng-show="$last" ng-click="removeDicente()">Remover</button>
+                  </fieldset>
+              </div>
+      </div>
+      <hr>
+      <h4>Funcionarios</h4>
+      <button ng-click="addNewFuncionario()">Adicionar</button>
+      <div class="form-group">
+              <div class="col-sm-10">
+                  <fieldset  data-ng-repeat="funcionario in funcionarios">
+                     <select class="form-control" ng-model="reuniaoFuncionario[$index]" ng-options="rParticipante as rParticipante.nome for rParticipante in rParticipantes track by rParticipante.id"></select>
+                     <button ng-show="$last" ng-click="removeFuncionario()">Remover</button>
+                  </fieldset>
+              </div>
+      </div>
+      <hr>
+      <h4>Convidados</h4>
+      <button ng-click="addNewConvidado()">Adicionar</button>
+      <div class="form-group">
+              <div class="col-sm-10">
+                  <fieldset  data-ng-repeat="convidado in convidados">
+                     <select class="form-control" ng-model="reuniaoConvidado[$index]" ng-options="rParticipante as rParticipante.nome for rParticipante in rParticipantes track by rParticipante.id"></select>
+                     <button ng-show="$last" ng-click="removeConvidado()">Remover</button>
+                  </fieldset>
+              </div>
+      </div>
+      <div>
+          <a class="btn btn-danger"  ng-click="cleanReuniao()">Limpar</a>
+          <a class="btn btn-primary" ng-click="editReuniao()">Save</a>
+      </div>
+    </form>
+  </div>
+</div>

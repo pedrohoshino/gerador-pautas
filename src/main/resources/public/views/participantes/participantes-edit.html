@@ -33,7 +33,7 @@
     <div class="form-group">
         <label for="tipo" class="col-sm-2 control-label">Tipo</label>
         <div class="col-sm-10">
-            <input type="text" ng-model="participante.tipo" class="form-control" id="tipo" placeholder="Tipo do Participante"/>
+            <select ng-model="participante.tipo" ng-options="tipo as tipo.nome for tipo in tipos track by tipo.id" class="form-control"></select>
         </div>
     </div>
     <div class="form-group">
