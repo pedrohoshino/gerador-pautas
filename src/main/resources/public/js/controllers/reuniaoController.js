@@ -61,21 +61,21 @@ angular.module('reuniao.controllers', ['textAngular']).controller('ReuniaoContro
   $scope.editReuniao = function() {
     $scope.criaHeader();
     $scope.reuniao.textoReuniao = $scope.reuniao.header;
-    $scope.reuniao.participantes = [];
+    $scope.reuniao.participanteSet = [];
     for(var i=0; i<$scope.reuniaoPresidente.length; i++){
-        $scope.reuniao.participantes.push($scope.reuniaoPresidente[i]);
+        $scope.reuniao.participanteSet.push($scope.reuniaoPresidente[i]);
     }
     for(var i=0; i<$scope.reuniaoDocente.length; i++){
-        $scope.reuniao.participantes.push($scope.reuniaoDocente[i]);
+        $scope.reuniao.participanteSet.push($scope.reuniaoDocente[i]);
     }
     for(var i=0; i<$scope.reuniaoDicente.length; i++){
-        $scope.reuniao.participantes.push($scope.reuniaoDicente[i]);
+        $scope.reuniao.participanteSet.push($scope.reuniaoDicente[i]);
     }
     for(var i=0; i<$scope.reuniaoFuncionario.length; i++){
-        $scope.reuniao.participantes.push($scope.reuniaoFuncionario[i]);
+        $scope.reuniao.participanteSet.push($scope.reuniaoFuncionario[i]);
     }
     for(var i=0; i<$scope.reuniaoConvidado.length; i++){
-        $scope.reuniao.participantes.push($scope.reuniaoConvidado[i]);
+        $scope.reuniao.participanteSet.push($scope.reuniaoConvidado[i]);
     }
     $http.put('reuniao/v1/reunioes/' + $scope.reuniao.id, $scope.reuniao).success(function() {
       $state.go('reunioes');

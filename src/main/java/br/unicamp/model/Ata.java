@@ -1,35 +1,54 @@
 package br.unicamp.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="ata")
 public class Ata {
 
 	@Id
+	@Column(name="idata")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	Long id;
-	String titulo;
-	String descricao;
-	String data;
-	String arquivo;
+	private Long idata;
+	
+	@Column(name="titulo")
+	private String titulo;
+	
+	@Column(name="descricao")
+	private String descricao;
+	
+	@Column(name="data")
+	private String data;
+	
+	@Column(name="texto")
+	//private Clob texto;
+	private String texto;
+	
+	@ManyToOne
+    private Reuniao reuniao;
+	
+	
 
 	public Ata(){
 
 	}
 
-	public Ata(Long id, String titulo, String descricao, String data, String arquivo) {
-		this.id = id;
+	public Ata(Long idAta, String titulo, String descricao, String data, String texto) {
+		this.idata = idAta;
 		this.titulo = titulo;
 		this.descricao = descricao;
 		this.data = data;
-		this.arquivo = arquivo;
+		this.texto = texto;
 	}
 
-	public String getArquivo() {
-		return arquivo;
+	public String getTexto() {
+		return texto;
 	}
 
 	public String getData() {
@@ -41,15 +60,15 @@ public class Ata {
 	}
 
 	public Long getId() {
-		return id;
+		return idata;
 	}
 
 	public String getTitulo() {
 		return titulo;
 	}
 
-	public void setArquivo(String arquivo) {
-		this.arquivo = arquivo;
+	public void setTexto(String texto) {
+		this.texto = texto;
 	}
 
 	public void setData(String data) {
@@ -61,10 +80,18 @@ public class Ata {
 	}
 
 	public void setId(Long id) {
-		this.id = id;
+		this.idata = id;
 	}
 
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
+	}
+	
+	public Reuniao getReuniao(){
+		return reuniao;
+	}
+	
+	public void setReuniao(Reuniao reuniao){
+		this.reuniao = reuniao;
 	}
 }

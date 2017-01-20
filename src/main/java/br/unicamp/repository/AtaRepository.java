@@ -4,21 +4,21 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import br.unicamp.model.Item;
+import br.unicamp.model.Ata;
 
-public interface ItemRepository extends JpaRepository<Item, Long> {
+public interface AtaRepository extends JpaRepository<Ata, Long> {
 
-	List<Item> findAll();
+	List<Ata> findAll();
 	
-	Item findOne(Long id);
+	Ata findOne(Long id);
 	
-	Item getOne(Long id);
+	Ata getOne(Long id);
 	
 	void delete(Long id);
 	
 	void flush();
 	
 	@SuppressWarnings("unchecked")
-	Item save(Item item);
+	Ata save(Ata ata);
 	
 }

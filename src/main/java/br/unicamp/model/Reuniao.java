@@ -2,27 +2,50 @@ package br.unicamp.model;
 
 import java.util.Set;
 
+import javax.persistence.Column;
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="reuniao")
+
 public class Reuniao {
 
 	@Id
+	@Column(name="idreuniao")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	Long id;
-	String titulo;
-	String descricao;
-	String local;
-	String data;
-	String hora;
-	String textoReuniao;
+	private Long id;
+
+	@Column(name="data")
+	private String data;
+
+	@Column(name="hora")
+	private String hora;
+
+	@Column(name="titulo")
+	private String titulo;
+
+	@Column(name="local")
+	private String local;
+
+	@Column(name="descricao")
+	private String descricao;
+
+	@Column(name="textoReuniao")
+	private String textoReuniao;
+
 
 	@ManyToMany(targetEntity=Participante.class)
 	private Set<Participante> participantes;
+
+	@ManyToMany(targetEntity=Usuario.class)
+	private Set<Usuario> usuario;
 
 	public Reuniao(){
 
@@ -30,12 +53,27 @@ public class Reuniao {
 
 	public Reuniao(Long id, String titulo, String descricao, String local, String data, String hora, String textoReuniao) {
 		this.id = id;
-		this.titulo = titulo;
-		this.descricao = descricao;
-		this.local = local;
 		this.data = data;
 		this.hora = hora;
+		this.titulo = titulo;
+		this.local = local;
+		this.descricao = descricao;
 		this.textoReuniao = textoReuniao;
+	}
+
+	public Reuniao(Long id, String titulo, String descricao, String local, String data, String hora, String textoReuniao, Set<Participante> participantes) {
+		this.id = id;
+		this.data = data;
+		this.hora = hora;
+		this.titulo = titulo;
+		this.local = local;
+		this.descricao = descricao;
+		this.textoReuniao = textoReuniao;
+		this.participantes = participantes;
+	}
+
+	public Long getId() {
+		return id;
 	}
 
 	public String getData() {
@@ -50,57 +88,52 @@ public class Reuniao {
 		return hora;
 	}
 
-	public Long getId() {
-		return id;
+	public String getTitulo() {
+		return titulo;
 	}
 
 	public String getLocal() {
 		return local;
-	}
-	public Set<Participante> getParticipantes() {
-		return participantes;
 	}
 
 	public String getTextoReuniao() {
 		return textoReuniao;
 	}
 
-	public String getTitulo() {
-		return titulo;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public void setData(String data) {
 		this.data = data;
 	}
 
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
-
 	public void setHora(String hora) {
 		this.hora = hora;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public void setLocal(String local) {
-		this.local = local;
-	}
-
-	public void setParticipantes(Set<Participante> participantes) {
-		this.participantes = participantes;
-	}
-
-	public void setTextoReuniao(String textoReuniao){
-		this.textoReuniao = textoReuniao;
 	}
 
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
 
+	public void setLocal(String local) {
+		this.local = local;
+	}
 
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
+	public void setTextoReuniao(String textoReuniao) {
+		this.textoReuniao = textoReuniao;
+	}
+
+	public Set<Participante> getParticipanteSet() {
+		return this.participantes;
+	}
+
+	public void setParticipanteSet(Set<Participante> participantes) {
+	      this.participantes = participantes;
+	}
 
 }

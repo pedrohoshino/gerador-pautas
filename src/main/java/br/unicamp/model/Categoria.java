@@ -1,18 +1,27 @@
 package br.unicamp.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="categoria")
 public class Categoria {
 	
 	@Id
+	@Column(name="idcategoria")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	Long id;
-	String titulo;
-	String descricao;
+	private Long id;
+	
+	@Column(name="titulo")
+	private String titulo;
+	
+	@Column(name="descricao")
+	private String descricao;
+	
 	
 	public Categoria(){		
 	}

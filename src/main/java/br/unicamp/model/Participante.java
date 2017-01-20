@@ -1,23 +1,49 @@
 package br.unicamp.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="participante")
+
 public class Participante {
 
 	@Id
+	@Column(name="idparticipante")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	Long id;
-	String nome;
-	String sobrenome;
-	String e_mail;
-	String titular;
-	String matricula;
-	String tipo;
+	private Long id;
+	
+	@Column(name="nome")
+	private String nome;
+	
+	@Column(name="sobrenome")
+	private String sobrenome;
+	
+	@Column(name="e_mail")
+	private String e_mail;
+	
+	@Column(name="titular")
+	private String titular;
+	
+	@Column(name="matricula")
+	private String matricula;
+	
+	@Column(name="tipo")
+	private String tipo;
 
+	
+	@OneToOne(optional = true)
+    private Usuario usuario;
+	
+	
+	/*@ManyToMany(targetEntity=Reuniao.class)
+	private Set<Reuniao> reuniaoSet;*/
+	
 	public Participante() {
 	}
 
@@ -31,6 +57,7 @@ public class Participante {
 		this.matricula = matricula;
 		this.tipo = tipo;
 	}
+		
 
 	public String getE_mail() {
 		return e_mail;
@@ -87,5 +114,16 @@ public class Participante {
 	public void setTitular(String titular) {
 		this.titular = titular;
 	}
+	
+	public Usuario getUsuario() {
+		return this.usuario;
+	}
+
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
+	
 
 }
