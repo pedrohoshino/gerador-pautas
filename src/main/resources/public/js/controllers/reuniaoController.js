@@ -1,5 +1,17 @@
 angular.module('reuniao.controllers', ['textAngular']).controller('ReuniaoController', function($scope, $state, $stateParams, popupService, $window, $http) {
 
+  $scope.presidentes = [];
+  $scope.convidados = [];
+  $scope.docentes = [];
+  $scope.dicentes = [];
+  $scope.funcionarios = [];
+
+  $scope.reuniaoPresidente = [];
+  $scope.reuniaoDocente = [];
+  $scope.reuniaoDicente = [];
+  $scope.reuniaoFuncionario = [];
+  $scope.reuniaoConvidado = [];
+
   $scope.getReunioes = function () {
     $http.get("reuniao/v1/reunioes").success(function (data) {
       $scope.reunioes = data;
@@ -47,12 +59,89 @@ angular.module('reuniao.controllers', ['textAngular']).controller('ReuniaoContro
   }
 
   $scope.editReuniao = function() {
-    console.log($scope.reuniao.arquivo)
     $scope.criaHeader();
     $scope.reuniao.arquivo = $scope.reuniao.header;
     $http.put('reuniao/v1/reunioes/' + $scope.reuniao.id, $scope.reuniao).success(function() {
       $state.go('reunioes');
     });
+  };
+
+  $scope.cleanReuniao = function() {
+    if (popupService.showPopup('Quer realmente limpar os campos?')) {
+      $scope.presidentes = [];
+      $scope.convidados = [];
+      $scope.docentes = [];
+      $scope.dicentes = [];
+      $scope.funcionarios = [];
+
+      $scope.reuniaoPresidente = [];
+      $scope.reuniaoDocente = [];
+      $scope.reuniaoDicente = [];
+      $scope.reuniaoFuncionario = [];
+      $scope.reuniaoConvidado = [];
+      $state.reload();
+    }
+  }
+
+  $scope.getParticipantes = function () {
+    $http.get("participante/v1/participantes").success(function (data) {
+      $scope.rParticipantes = data;
+    });
+  };
+
+  $scope.addNewPresidente = function() {
+    var newItemNo = $scope.presidentes.length+1;
+    $scope.presidentes.push({'id': newItemNo});
+  };
+
+  $scope.removePresidente = function() {
+    var lastItem = $scope.presidentes.length-1;
+    $scope.presidentes.splice(lastItem);
+    $scope.reuniaoPresidente.splice(lastItem)
+  };
+
+  $scope.addNewDocente = function() {
+    var newItemNo = $scope.docentes.length+1;
+    $scope.docentes.push({'id': newItemNo});
+  };
+
+  $scope.removeDocente = function() {
+    var lastItem = $scope.docentes.length-1;
+    $scope.docentes.splice(lastItem);
+    $scope.reuniaoDocente.splice(lastItem)
+  };
+
+  $scope.addNewDicente = function() {
+    var newItemNo = $scope.dicentes.length+1;
+    $scope.dicentes.push({'id': newItemNo});
+  };
+
+  $scope.removeDicente = function() {
+    var lastItem = $scope.dicentes.length-1;
+    $scope.dicentes.splice(lastItem);
+    $scope.reuniaoDicente.splice(lastItem)
+  };
+
+  $scope.addNewFuncionario = function() {
+    var newItemNo = $scope.funcionarios.length+1;
+    $scope.funcionarios.push({'id': newItemNo});
+  };
+
+  $scope.removeFuncionario = function() {
+    var lastItem = $scope.funcionarios.length-1;
+    $scope.funcionarios.splice(lastItem);
+    $scope.reuniaoFuncionario.splice(lastItem)
+  };
+
+  $scope.addNewConvidado = function() {
+    var newItemNo = $scope.convidados.length+1;
+    $scope.convidados.push({'id': newItemNo});
+  };
+
+  $scope.removeConvidado = function() {
+    var lastItem = $scope.convidados.length-1;
+    $scope.convidados.splice(lastItem);
+    $scope.reuniaoConvidado.splice(lastItem)
   };
 
 });
