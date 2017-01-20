@@ -1,9 +1,12 @@
 package br.unicamp.model;
 
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Reuniao {
@@ -16,24 +19,23 @@ public class Reuniao {
 	String local;
 	String data;
 	String hora;
-	String arquivo;
+	String textoReuniao;
+
+	@ManyToMany(targetEntity=Participante.class)
+	private Set<Participante> participantes;
 
 	public Reuniao(){
 
 	}
 
-	public Reuniao(Long id, String titulo, String descricao, String local, String data, String hora, String arquivo) {
+	public Reuniao(Long id, String titulo, String descricao, String local, String data, String hora, String textoReuniao) {
 		this.id = id;
 		this.titulo = titulo;
 		this.descricao = descricao;
 		this.local = local;
 		this.data = data;
 		this.hora = hora;
-		this.arquivo = arquivo;
-	}
-
-	public String getArquivo() {
-		return arquivo;
+		this.textoReuniao = textoReuniao;
 	}
 
 	public String getData() {
@@ -43,6 +45,7 @@ public class Reuniao {
 	public String getDescricao() {
 		return descricao;
 	}
+
 	public String getHora() {
 		return hora;
 	}
@@ -54,13 +57,16 @@ public class Reuniao {
 	public String getLocal() {
 		return local;
 	}
+	public Set<Participante> getParticipantes() {
+		return participantes;
+	}
+
+	public String getTextoReuniao() {
+		return textoReuniao;
+	}
 
 	public String getTitulo() {
 		return titulo;
-	}
-
-	public void setArquivo(String arquivo){
-		this.arquivo = arquivo;
 	}
 
 	public void setData(String data) {
@@ -81,6 +87,14 @@ public class Reuniao {
 
 	public void setLocal(String local) {
 		this.local = local;
+	}
+
+	public void setParticipantes(Set<Participante> participantes) {
+		this.participantes = participantes;
+	}
+
+	public void setTextoReuniao(String textoReuniao){
+		this.textoReuniao = textoReuniao;
 	}
 
 	public void setTitulo(String titulo) {
