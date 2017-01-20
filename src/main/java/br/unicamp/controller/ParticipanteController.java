@@ -2,6 +2,7 @@ package br.unicamp.controller;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,7 +16,9 @@ import br.unicamp.repository.ParticipanteRepository;
 @RequestMapping("participante/v1/")
 public class ParticipanteController {
 	
+	@Autowired
 	ParticipanteRepository participanteRepository;
+
 	
 	@RequestMapping(value="participantes", method=RequestMethod.GET)
 	public List<Participante> list(){

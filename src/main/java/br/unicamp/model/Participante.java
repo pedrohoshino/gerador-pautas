@@ -10,6 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="participante")
+
 public class Participante {
 
 	@Id
@@ -35,7 +36,8 @@ public class Participante {
 	@Column(name="tipo")
 	private String tipo;
 
-	@OneToOne
+	
+	@OneToOne(optional = true)
     private Usuario usuario;
 	
 	
@@ -55,20 +57,7 @@ public class Participante {
 		this.matricula = matricula;
 		this.tipo = tipo;
 	}
-	
-	/*public Participante(Long id, String nome, String sobrenome, String e_mail, String titular, String matricula,
-			String tipo, Set<Reuniao> reunioes) {
-		this.id = id;
-		this.nome = nome;
-		this.sobrenome = sobrenome;
-		this.e_mail = e_mail;
-		this.titular = titular;
-		this.matricula = matricula;
-		this.tipo = tipo;
-		this.reuniaoSet = reunioes;
-	}*/
-	
-	
+		
 
 	public String getE_mail() {
 		return e_mail;
@@ -134,14 +123,6 @@ public class Participante {
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
-	
-	/*public Set<Reuniao> getReuniaoSet() {
-		return reuniaoSet;
-	}
-	
-	public void setReunioSet(Set<Reuniao> reunioes) {
-	      this.reuniaoSet = reunioes;
-	}*/
 
 	
 
