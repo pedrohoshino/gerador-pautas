@@ -24,7 +24,7 @@ angular.module('reuniao.controllers', ['textAngular']).controller('ReuniaoContro
 
   $scope.addReuniao = function() {
     $scope.criaHeader();
-    $scope.reuniao.arquivo = $scope.reuniao.header;
+    $scope.reuniao.textoReuniao = $scope.reuniao.header;
     $http.post('reuniao/v1/reunioes', $scope.reuniao).success(function() {
       $state.go('reunioes');
     });
@@ -53,14 +53,30 @@ angular.module('reuniao.controllers', ['textAngular']).controller('ReuniaoContro
     $http.get("reuniao/v1/reunioes/" + reuniao.id).success(function (data) {
       $scope.reuniao = data;
       var doc = new jsPDF();
-      doc.fromHTML($scope.reuniao.arquivo, 15, 15,{'width': 170});
+      doc.fromHTML($scope.reuniao.textoReuniao, 15, 15,{'width': 170});
       doc.save($scope.reuniao.titulo + '.pdf');
     });
   }
 
   $scope.editReuniao = function() {
     $scope.criaHeader();
-    $scope.reuniao.arquivo = $scope.reuniao.header;
+    $scope.reuniao.textoReuniao = $scope.reuniao.header;
+    $scope.reuniao.participanteSet = [];
+    for(var i=0; i<$scope.reuniaoPresidente.length; i++){
+        $scope.reuniao.participanteSet.push($scope.reuniaoPresidente[i]);
+    }
+    for(var i=0; i<$scope.reuniaoDocente.length; i++){
+        $scope.reuniao.participanteSet.push($scope.reuniaoDocente[i]);
+    }
+    for(var i=0; i<$scope.reuniaoDicente.length; i++){
+        $scope.reuniao.participanteSet.push($scope.reuniaoDicente[i]);
+    }
+    for(var i=0; i<$scope.reuniaoFuncionario.length; i++){
+        $scope.reuniao.participanteSet.push($scope.reuniaoFuncionario[i]);
+    }
+    for(var i=0; i<$scope.reuniaoConvidado.length; i++){
+        $scope.reuniao.participanteSet.push($scope.reuniaoConvidado[i]);
+    }
     $http.put('reuniao/v1/reunioes/' + $scope.reuniao.id, $scope.reuniao).success(function() {
       $state.go('reunioes');
     });

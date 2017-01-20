@@ -1,9 +1,10 @@
 package br.unicamp.model;
 
-
 import java.util.Set;
 
 import javax.persistence.Column;
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,35 +21,34 @@ public class Reuniao {
 	@Column(name="idreuniao")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
-	@Column(name="data") 
+
+	@Column(name="data")
 	private String data;
-	
+
 	@Column(name="hora")
 	private String hora;
-	
+
 	@Column(name="titulo")
 	private String titulo;
-	
+
 	@Column(name="local")
 	private String local;
-	
+
 	@Column(name="descricao")
 	private String descricao;
 
 	@Column(name="textoReuniao")
 	private String textoReuniao;
-	
-	
+
+
 	@ManyToMany(targetEntity=Participante.class)
-	private Set<Participante> participantes;	
+	private Set<Participante> participantes;
 
 	@ManyToMany(targetEntity=Usuario.class)
-	private Set<Usuario> usuario;	
+	private Set<Usuario> usuario;
 
-	
 	public Reuniao(){
-		
+
 	}
 
 	public Reuniao(Long id, String titulo, String descricao, String local, String data, String hora, String textoReuniao) {
@@ -60,7 +60,7 @@ public class Reuniao {
 		this.descricao = descricao;
 		this.textoReuniao = textoReuniao;
 	}
-	
+
 	public Reuniao(Long id, String titulo, String descricao, String local, String data, String hora, String textoReuniao, Set<Participante> participantes) {
 		this.id = id;
 		this.data = data;
@@ -71,13 +71,17 @@ public class Reuniao {
 		this.textoReuniao = textoReuniao;
 		this.participantes = participantes;
 	}
-	
+
 	public Long getId() {
 		return id;
 	}
-	
+
 	public String getData() {
 		return data;
+	}
+
+	public String getDescricao() {
+		return descricao;
 	}
 
 	public String getHora() {
@@ -87,13 +91,9 @@ public class Reuniao {
 	public String getTitulo() {
 		return titulo;
 	}
-	
+
 	public String getLocal() {
 		return local;
-	}
-	
-	public String getDescricao() {
-		return descricao;
 	}
 
 	public String getTextoReuniao() {
@@ -107,11 +107,11 @@ public class Reuniao {
 	public void setData(String data) {
 		this.data = data;
 	}
-	
+
 	public void setHora(String hora) {
 		this.hora = hora;
 	}
-	
+
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
@@ -119,19 +119,19 @@ public class Reuniao {
 	public void setLocal(String local) {
 		this.local = local;
 	}
-	
+
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	
+
 	public void setTextoReuniao(String textoReuniao) {
 		this.textoReuniao = textoReuniao;
 	}
-	
+
 	public Set<Participante> getParticipanteSet() {
 		return this.participantes;
 	}
-	
+
 	public void setParticipanteSet(Set<Participante> participantes) {
 	      this.participantes = participantes;
 	}
