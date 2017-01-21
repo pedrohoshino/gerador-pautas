@@ -3,7 +3,6 @@ package br.unicamp.model;
 import java.util.Set;
 
 import javax.persistence.Column;
-import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+
 
 @Entity
 @Table(name="reuniao")
@@ -41,8 +41,8 @@ public class Reuniao {
 	private String textoReuniao;
 
 
-	@ManyToMany(targetEntity=Participante.class)
-	private Set<Participante> participantes;
+	//@ManyToMany(targetEntity=Participante.class)
+	//private Set<Participante> participantes;
 
 	@ManyToMany(targetEntity=Usuario.class)
 	private Set<Usuario> usuario;
@@ -61,16 +61,6 @@ public class Reuniao {
 		this.textoReuniao = textoReuniao;
 	}
 
-	public Reuniao(Long id, String titulo, String descricao, String local, String data, String hora, String textoReuniao, Set<Participante> participantes) {
-		this.id = id;
-		this.data = data;
-		this.hora = hora;
-		this.titulo = titulo;
-		this.local = local;
-		this.descricao = descricao;
-		this.textoReuniao = textoReuniao;
-		this.participantes = participantes;
-	}
 
 	public Long getId() {
 		return id;
@@ -126,14 +116,6 @@ public class Reuniao {
 
 	public void setTextoReuniao(String textoReuniao) {
 		this.textoReuniao = textoReuniao;
-	}
-
-	public Set<Participante> getParticipanteSet() {
-		return this.participantes;
-	}
-
-	public void setParticipanteSet(Set<Participante> participantes) {
-	      this.participantes = participantes;
 	}
 
 }
