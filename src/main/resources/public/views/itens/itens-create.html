@@ -1,5 +1,17 @@
-<div class="container pad-top">
+<div class="container pad-top" ng-init="getCategorias()">
   <form class="form-horizontal" role="form" ng-submit="addItem(item)">
+    <div class="form-group">
+        <label for="ordem" class="col-sm-2 control-label">Ordem</label>
+        <div class="col-sm-10">
+            <input type="text" ng-model="item.ordem" class="form-control" id="ordem" placeholder="Ordem do Item"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="categoria" class="col-sm-2 control-label">Categoria</label>
+        <div class="col-sm-10">
+            <select class="form-control" ng-model="item.categoria" ng-options="categoria as categoria.titulo for categoria in categorias track by categoria.id"></select>
+        </div>
+    </div>
     <div class="form-group">
         <label for="titulo" class="col-sm-2 control-label">Titulo</label>
         <div class="col-sm-10">
@@ -15,7 +27,12 @@
     <div class="form-group">
         <label for="situacao" class="col-sm-2 control-label">Situação</label>
         <div class="col-sm-10">
-            <input type="text" ng-model="item.situacao" class="form-control" id="situacao" placeholder="Situação do Item"/>
+          <select class="form-control" ng-model="item.situacao">
+             <option>Pendente</option>
+             <option>Aprovado</option>
+             <option>Reprovado</option>
+             <option>Retirado de Pauta</option>
+          </select>
         </div>
     </div>
     <div class="form-group">
