@@ -1,0 +1,21 @@
+<div class="container pad-top">
+  <div ng-init="getUsuario()">
+    <table class="table simpletable">
+        <tr>
+            <td><h3>Details for {{usuario.login}}</h3></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Login</td>
+            <td>{{usuario.login}}</td>
+        </tr>
+        <tr>
+            <td>Tipo</td>
+            <td>{{usuario.tipo}}</td>
+        </tr>
+    </table>
+  </div>
+  <div>
+      <a class="btn btn-primary" ui-sref="editUsuario({id:usuario.id})">Edit</a>
+  </div>
+</div>

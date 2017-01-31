@@ -1,5 +1,9 @@
 package br.unicamp.model;
 
+import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,6 +25,7 @@ public class Usuario {
 	
 	@Column(name="senha")
 	private String senha;
+		
 	
 	@Column(name="tipo")
 	private String tipo;
@@ -28,12 +33,39 @@ public class Usuario {
 	public Usuario(){
 	}
 	
-	public Usuario(Long id, String login, String senha, String tipo){
+	public Usuario(Long id, String login, String senha, String tipo) throws NoSuchAlgorithmException, UnsupportedEncodingException{
 		this.id =id;
 		this.login = login;
-		this.senha = senha;
 		this.tipo = tipo;
+		
+
+	/*	MessageDigest algorithm = MessageDigest.getInstance("SHA-256");
+		byte messageDigest[] = algorithm.digest(senha.getBytes("UTF-8"));
+		 
+		StringBuilder hexString = new StringBuilder();
+		for (byte b : messageDigest) {
+		  hexString.append(String.format("%02X", 0xFF & b));
+		}
+		this.senha = hexString.toString();
+		*/
+		
+		this.senha = codificaSenha(senha);
+		
 	}
+	
+	private String codificaSenha(String senha) throws NoSuchAlgorithmException, UnsupportedEncodingException{
+		
+		MessageDigest algorithm = MessageDigest.getInstance("SHA-256");
+		byte messageDigest[] = algorithm.digest(senha.getBytes("UTF-8"));
+		 
+		StringBuilder hexString = new StringBuilder();
+		for (byte b : messageDigest) {
+		  hexString.append(String.format("%02X", 0xFF & b));
+		}
+		return hexString.toString();
+		
+	}
+	
 
 	public String getTipo() {
 		return this.tipo;
@@ -63,8 +95,30 @@ public class Usuario {
 		this.login = login;
 	}
 
-	public void setSennha(String senha) {
-		this.senha = senha;
+	public void setSennha(String senha) throws NoSuchAlgorithmException, UnsupportedEncodingException {
+		this.senha = codificaSenha(senha);
 	}
+	
+	
+	/*
+	 * Se a senha entrada por parâmatro for igual a senha do banco, retorna 0
+	 * Caso sejam diferentes, retorna -1
+	 * 	 */
+	public Integer comparaSenha(String senha) throws NoSuchAlgorithmException, UnsupportedEncodingException{
+		
+		String senhaBanco, temporaria;
+		
+		senhaBanco = getSenha();
+		temporaria = codificaSenha(senha);
+		
+		
+		if (senhaBanco.equals(temporaria))
+			return 0;
+		else
+			return (-1);
+	}
+	
+	
+	
 
 }

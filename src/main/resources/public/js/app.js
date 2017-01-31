@@ -1,5 +1,5 @@
 (function() {
-	var app = angular.module('app', ['ui.router', 'navController', 'ngAnimate', 'ui.bootstrap', 'ngResource', 'app.services', 'item.controllers', 'pauta.controllers', 'reuniao.controllers', 'ata.controllers', 'deliberacao.controllers', 'categoria.controllers', 'participante.controllers'])
+	var app = angular.module('app', ['ui.router', 'navController', 'ngAnimate', 'ui.bootstrap', 'ngResource', 'app.services', 'item.controllers', 'pauta.controllers', 'reuniao.controllers', 'ata.controllers', 'deliberacao.controllers', 'categoria.controllers', 'participante.controllers', 'usuario.controllers'])
 
 	// define for requirejs loaded modules
 	define('app', [], function() { return app; });
@@ -165,6 +165,26 @@
 					controller:'ParticipanteController'
 			})
 
+			
+			.state('usuarios',{
+				url:'/usuarios',
+				templateUrl: 'views/usuarios/usuarios.html',
+				controller:'UsuarioController'
+			}).state('viewUsuario',{
+				 url:'/usuario/:id/view',
+				 templateUrl: 'views/usuarios/usuarios-view.html',
+				 controller:'UsuarioController'
+			}).state('newUsuario',{
+					url:'/usuarios/new',
+					templateUrl: 'views/usuarios/usuarios-create.html',
+					controller:'UsuarioController'
+			}).state('editUsuario',{
+					url:'/usuario/:id/edit',
+					templateUrl: 'views/usuarios/usuarios-edit.html',
+					controller:'UsuarioController'
+			})
+			
+			
 			// .state('arquivos',{
 			// 	url:'/arquivos',
 			// 	templateUrl: 'views/arquivos/arquivos.html',

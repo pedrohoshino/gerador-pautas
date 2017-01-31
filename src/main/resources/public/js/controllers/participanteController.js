@@ -5,7 +5,7 @@ angular.module('participante.controllers', []).controller('ParticipanteControlle
     nome: 'Docente'
   }, {
     id: 2,
-    nome: 'Dicente'
+    nome: 'Discente'
   }, {
     id: 3,
     nome: 'Funcionario'

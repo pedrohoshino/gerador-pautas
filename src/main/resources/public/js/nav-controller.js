@@ -38,6 +38,10 @@ angular.module('navController', [])
 			{
 				name: 'Participantes',
 				url: '#/participantes'
+			},
+			{
+				name: 'Usuarios',
+				url: '#/usuarios'
 			}//,
 			// {
 			// 	name: 'Arquivos',
