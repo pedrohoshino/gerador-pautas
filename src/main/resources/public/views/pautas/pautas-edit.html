@@ -1,26 +1,40 @@
-<body>
-  <div class="container pad-top" ng-init="getPauta()">
-    <form class="form-horizontal" role="form" ng-submit="editPauta()">
-      <h1>Pauta</h1>
+<div ng-init="getReuniao()">
+    <div class="container pad-top" ng-init="getItens()">
+        <form class="form-horizontal">
+            <h1>Itens da pauta</h1>
 
-      <div class="form-group">
-          <label for="name" class="col-sm-2 control-label">Titulo</label>
-          <div class="col-sm-10">
-              <input type="text" ng-model="pauta.titulo" class="form-control" id="titulo" placeholder="Titulo da Pauta"/>
-          </div>
-      </div>
-      <div class="form-group">
-          <label for="description" class="col-sm-2 control-label">Descrição</label>
-          <div class="col-sm-10">
-              <input type="text" ng-model="pauta.descricao" class="form-control" id="descricao" placeholder="Descrição da Pauta"/>
-          </div>
-      </div>
-      <div text-angular ng-model="pauta.arquivo"></div>
-
-
-      <div>
-          <input type="submit" class="btn btn-primary" value="Save"/>
-      </div>
-    </form>
-  </div>
-</body>
+            <table class="table simpletable">
+                <thead>
+                  <tr>
+                    <th>Titulo</th>
+                    <th>Ordem</th>
+                    <th>Categoria</th>
+                    <th>Descição</th>
+                    <th>Situação</th>
+                    <th>Ações</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr ng-repeat="item in itens">
+                      <td style="width: 10%; word-wrap:break-word;">{{item.titulo}}</td>
+                      <td style="width: 5%; word-wrap:break-word;">{{item.ordem}}</td>
+                      <td style="width: 15%; word-wrap:break-word;">{{item.categoria.titulo}}</td>
+                      <td style="width: 40%; word-wrap:break-word;">{{item.descricao}}</td>
+                      <td style="width: 10%; word-wrap:break-word;">{{item.situacao}}</td>
+                      <td>
+                          <a class="btn btn-primary" ui-sref="viewItem({id:item.id})">View</a>
+                          <a class="btn btn-primary" ui-sref="editItem({id:item.id})">Edit</a>
+                          <a class="btn btn-danger"  ng-click="deleteItem(item)">Delete</a>
+                      </td>
+                  </tr>
+                </tbody>
+            </table>
+            <div>
+                  <a class="btn btn-primary" ui-sref="newItem({id:reuniao.id})">Adicionar</a>
+            <div>
+            <div>
+                  <a class="btn btn-danger" ng-click="back()">Back</a>
+            </div>
+        </form>
+    </div>
+</div>
