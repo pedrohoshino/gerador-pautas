@@ -81,6 +81,10 @@
 					url:'/reunioes-participantes/:id/edit',
 					templateUrl: 'views/reunioes/reunioes-participantes-edit.html',
 					controller:'ReuniaoController'
+			}).state('editReuniaoPDF',{
+					url:'/reunioes-pdf/:id/edit',
+					templateUrl: 'views/reunioes/reunioes-pdf.html',
+					controller:'ReuniaoController'
 			})
 
 			.state('deliberacoes',{
@@ -127,6 +131,14 @@
         url:'/itens/:id/view',
         templateUrl: 'views/itens/itens-view.html',
         controller:'ItemController'
+			}).state('newItem',{
+        url:'/itens/:id/new',
+     		templateUrl: 'views/itens/itens-create.html',
+        controller:'ItemController'
+			}).state('editItem',{
+					url:'/itens/:id/edit',
+					templateUrl: 'views/itens/itens-edit.html',
+					controller:'ItemController'
 			})
 
 			.state('categorias',{

@@ -12,34 +12,80 @@ angular.module('reuniao.controllers', ['textAngular']).controller('ReuniaoContro
   $scope.reuniaoFuncionario = [];
   $scope.reuniaoConvidado = [];
 
+  $scope.itens = [];
+
   $scope.getReunioes = function () {
     $http.get("reuniao/v1/reunioes").success(function (data) {
       $scope.reunioes = data;
     });
   };
 
-  $scope.criaHeader = function(){
-    $scope.reuniao.header ="<blockquote><blockquote><h6><b>DE ORDEM, CONVOCAMOS OS MEMBROS DA CONGREGAÇÃO DO INSTITUTO DE COMPUTAÇÃO PARA A " + $scope.reuniao.titulo.toUpperCase() + " DA CONGREGAÇÃO, A REALIZAR-SE DIA " + $scope.reuniao.data + ", ÀS " + $scope.reuniao.hora + ", NA SALA " + $scope.reuniao.local + " DO INSTITUTO DE COMPUTAÇÃO.</b></h6></blockquote></blockquote>";
-  }
+  $scope.criaHeader = function() {
+    $scope.header ="<blockquote><blockquote><h6><b>DE ORDEM, CONVOCAMOS OS MEMBROS DA CONGREGAÇÃO DO INSTITUTO DE COMPUTAÇÃO PARA A " + $scope.reuniao.titulo.toUpperCase() + " DA CONGREGAÇÃO, A REALIZAR-SE DIA " + $scope.reuniao.data + ", ÀS " + $scope.reuniao.hora + ", NA SALA " + $scope.reuniao.local + " DO INSTITUTO DE COMPUTAÇÃO.</b></h6></blockquote></blockquote><br>";
+  };
 
-  $scope.addReuniao = function() {
-    $scope.criaHeader();
-    $scope.reuniao.textoReuniao = $scope.reuniao.header;
-    $http.post('reuniao/v1/reunioes', $scope.reuniao).success(function() {
-      $state.go('reunioes');
+  $scope.createText = function() {
+    $http.get("reuniao/v1/reunioes/" + $stateParams.id).success(function (data) {
+      $scope.reuniao = data;
+      $http.get("categoria/v1/categorias").success(function (data) {
+        $scope.categorias = data;
+        $scope.criaHeader();
+        $http.get("item/v1/itens").success(function (data) {
+          for(var i=0; i<data.length; i++){
+            if(data[i].reuniao.id == $stateParams.id)
+              $scope.itens.push(data[i]);
+          }
+          $scope.criaBody();
+          $scope.reuniao.textoReuniao = $scope.header+$scope.body;
+        });
+      });
     });
   };
 
-  $scope.previewReuniao = function() {
+  $scope.criaBody = function() {
+      $scope.body = "";
+      for(var i=0; i<$scope.categorias.length; i++){
+        $scope.categorias[i].tamanho = 0;
+      }
+      for(var i=0; i<$scope.itens.length; i++){
+        for(var v=0; v<$scope.categorias.length; v++){
+          if($scope.itens[i].categoria.titulo == $scope.categorias[v].titulo){
+            $scope.categorias[v].tamanho += 1;
+          }
+        }
+      }
+      for(var i=0; i<$scope.categorias.length; i++){
+        if($scope.categorias[i].tamanho > 0){
+            $scope.body += "<h3><b>" + $scope.categorias[i].titulo + "</b></h3>";
+        }
+        for(var v=0; v<$scope.itens.length; v++){
+          if($scope.itens[v].categoria.titulo == $scope.categorias[i].titulo){
+            $scope.body += "<div>" + $scope.itens[v].ordem + ". " + $scope.itens[v].descricao + "</div>";
+          }
+        }
+        $scope.body += "<div></div>"
+      }
+  };
+
+  $scope.addReuniao = function() {
     $scope.criaHeader();
-    $scope.reuniao.vizualizar = $scope.reuniao.header;
+    $scope.reuniao.textoReuniao = $scope.header;
+    $http.post('reuniao/v1/reunioes', $scope.reuniao).success(function() {
+      $state.go('reunioes');
+    });
   };
 
   $scope.getReuniao = function() {
     $http.get("reuniao/v1/reunioes/" + $stateParams.id).success(function (data) {
       $scope.reuniao = data;
     })
-  }
+  };
+
+  $scope.getReuniaoParticipantes = function() {
+    $http.get("reuniaoparticipantes/v1/reuniaoparticipantes").success(function (data) {
+      $scope.reuniaoParticipantes=data;
+    })
+  };
 
   $scope.deleteReuniao = function(reuniao) {
     if (popupService.showPopup('Quer realmente deletar?')) {
@@ -50,32 +96,35 @@ angular.module('reuniao.controllers', ['textAngular']).controller('ReuniaoContro
   }
 
   $scope.gerarPDF = function(reuniao) {
-    $http.get("reuniao/v1/reunioes/" + reuniao.id).success(function (data) {
-      $scope.reuniao = data;
+      // console.log($scope.reuniao.textoReuniao)
       var doc = new jsPDF();
       doc.fromHTML($scope.reuniao.textoReuniao, 15, 15,{'width': 170});
       doc.save($scope.reuniao.titulo + '.pdf');
-    });
   }
 
   $scope.editReuniao = function() {
     $scope.criaHeader();
-    $scope.reuniao.textoReuniao = $scope.reuniao.header;
-    $scope.reuniao.participanteSet = [];
+    $scope.reuniao.textoReuniao = $scope.header;
     for(var i=0; i<$scope.reuniaoPresidente.length; i++){
-        $scope.reuniao.participanteSet.push($scope.reuniaoPresidente[i]);
+        var presidente = {reuniao:$scope.reuniao, tipo_participacao:"Presidente", participantes:$scope.reuniaoPresidente[i]};
+
+        $http.post('reuniaoparticipantes/v1/reuniaoparticipantes', presidente);
     }
     for(var i=0; i<$scope.reuniaoDocente.length; i++){
-        $scope.reuniao.participanteSet.push($scope.reuniaoDocente[i]);
+        var docente = [$scope.reuniao.id, $scope.reuniaoDocente[i].id, "docente"];
+        $http.post('reuniaoparticipantes/v1/reuniaoparticipantes', docente);
     }
     for(var i=0; i<$scope.reuniaoDicente.length; i++){
-        $scope.reuniao.participanteSet.push($scope.reuniaoDicente[i]);
+        var dicente = [$scope.reuniao.id, $scope.reuniaoDicente[i].id, "dicente"];
+        $http.post('reuniaoparticipantes/v1/reuniaoparticipantes', dicente);
     }
     for(var i=0; i<$scope.reuniaoFuncionario.length; i++){
-        $scope.reuniao.participanteSet.push($scope.reuniaoFuncionario[i]);
+        var funcionario = [$scope.reuniao.id, $scope.reuniaoFuncionario[i].id, "funcionario"];
+        $http.post('reuniaoparticipantes/v1/reuniaoparticipantes', funcionario);
     }
     for(var i=0; i<$scope.reuniaoConvidado.length; i++){
-        $scope.reuniao.participanteSet.push($scope.reuniaoConvidado[i]);
+        var convidado = [$scope.reuniao.id, $scope.reuniaoConvidado[i].id, "convidado"];
+        $http.post('reuniaoparticipantes/v1/reuniaoparticipantes', convidado);
     }
     $http.put('reuniao/v1/reunioes/' + $scope.reuniao.id, $scope.reuniao).success(function() {
       $state.go('reunioes');
