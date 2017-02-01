@@ -10,6 +10,7 @@ angular.module('item.controllers', []).controller('ItemController', function($sc
     $http.get("reuniao/v1/reunioes/" + $stateParams.id).success(function (data) {
       $scope.reuniao = data;
       item.reuniao = $scope.reuniao;
+      item.dataDeliberacao = $scope.reuniao.data;
       $http.post('item/v1/itens', item).success(function() {
         $window.location.href = "index.html#/pautas/" + $stateParams.id + "/edit";
       });
@@ -19,7 +20,6 @@ angular.module('item.controllers', []).controller('ItemController', function($sc
   $scope.getItem = function() {
     $http.get("item/v1/itens/" + $stateParams.id).success(function (data) {
       $scope.item = data;
-      console.log($scope.item);
     })
   }
 
