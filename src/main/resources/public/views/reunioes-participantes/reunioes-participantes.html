@@ -1,0 +1,36 @@
+<div ng-init="getReuniao()">
+  <div class="container pad-top" ng-init="getReuniaoParticipantes()">
+    <form class="form-horizontal" role="form">
+      <h1>Paticipantes</h1>
+
+            <table class="table simpletable">
+                <thead>
+                  <tr>
+                    <th>Participante</th>
+                    <th>Categoria</th>
+                    <th>Tipo de Participação</th>
+                    <th>Ações</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr ng-repeat="reuniaoParticipante in reuniaoParticipantes">
+                      <td style="width: 10%; word-wrap:break-word;">{{reuniaoParticipante.participante.nome}}</td>
+                      <td style="width: 5%; word-wrap:break-word;">{{reuniaoParticipante.participante.tipo}}</td>
+                      <td style="width: 15%; word-wrap:break-word;">{{reuniaoParticipante.tipoParticipacao}}</td>
+                      <td>
+                          <a class="btn btn-primary" ui-sref="viewReuniaoParticipantes({id:reuniaoParticipante.id})">View</a>
+                          <a class="btn btn-primary" ui-sref="editReuniaoParticipantes({id:reuniaoParticipante.id})">Edit</a>
+                          <a class="btn btn-danger"  ng-click="deleteReuniaoParticipante(reuniaoParticipante)">Delete</a>
+                      </td>
+                  </tr>
+                </tbody>
+            </table>
+            <div>
+                  <a class="btn btn-primary" ui-sref="newReuniaoParticipantes({id:reuniao.id})">Adicionar</a>
+            <div>
+            <div>
+                  <a class="btn btn-danger" ng-click="back()">Back</a>
+            </div>
+	</form>
+  </div>
+</div>

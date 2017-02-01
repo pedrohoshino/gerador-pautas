@@ -1,0 +1,26 @@
+<div class="container pad-top">
+  <div ng-init="getReuniaoParticipante()">
+    <table class="table simpletable">
+        <tr>
+            <td><h3>Details for {{reuniaoParticipante.participante.nome}}</h3></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Participante</td>
+            <td>{{reuniaoParticipante.participante.nome}}</td>
+        </tr>
+        <tr>
+            <td>Tipo</td>
+            <td>{{reuniaoParticipante.participante.tipo}}</td>
+        </tr>
+        <tr>
+            <td>Tipo de Participação</td>
+            <td>{{reuniaoParticipante.tipoParticipacao}}</td>
+        </tr>
+
+    </table>
+  </div>
+  <div>
+      <a class="btn btn-primary" ui-sref="editReuniaoParticipantes({id:reuniaoParticipante.id})">Edit</a>
+  </div>
+</div>

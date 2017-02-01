@@ -1,5 +1,5 @@
 (function() {
-	var app = angular.module('app', ['ui.router', 'navController', 'ngAnimate', 'ui.bootstrap', 'ngResource', 'app.services', 'item.controllers', 'pauta.controllers', 'reuniao.controllers', 'ata.controllers', 'deliberacao.controllers', 'categoria.controllers', 'participante.controllers', 'usuario.controllers'])
+	var app = angular.module('app', ['ui.router', 'navController', 'ngAnimate', 'ui.bootstrap', 'ngResource', 'app.services', 'item.controllers', 'pauta.controllers', 'reuniao.controllers', 'ata.controllers', 'deliberacao.controllers', 'categoria.controllers', 'participante.controllers', 'usuario.controllers','reuniaoParticipantes.controllers'])
 
 	// define for requirejs loaded modules
 	define('app', [], function() { return app; });
@@ -60,6 +60,31 @@
 		        templateUrl: 'views/pautas/pautas-edit.html',
 		        controller:'PautaController'
 		    })
+		    
+		    
+		    .state('reuniaoparticipantes',{
+		        url:'/reuniaoparticipantes',
+		        templateUrl: 'views/reunioes-participantes/reunioes-participantes.html',
+		        controller:'ReuniaoParticipantesController'
+		    }).state('viewReuniaoParticipantes',{
+		       url:'/reuniaoparticipantes/:id/view',
+		       templateUrl: 'views/reunioes-participantes/reunioes-participantes-view.html',
+		       controller:'ReuniaoParticipantesController'
+		    }).state('newReuniaoParticipantes',{
+		        url:'/reuniaoparticipantes/:id/new',
+		        templateUrl: 'views/reunioes-participantes/reunioes-participantes-create.html',
+		        controller:'ReuniaoParticipantesController'
+		    }).state('editReuniaoParticipantes',{
+		        url:'/reuniaoparticipantes/:id/edit',
+		        templateUrl: 'views/reunioes-participantes/reunioes-participantes-edit.html',
+		        controller:'ReuniaoParticipantesController'
+		    }).state('editListaReuniaoParticipantes',{
+		        url:'/reuniaoparticipantes/:id',
+		        templateUrl: 'views/reunioes-participantes/reunioes-participantes.html',
+		        controller:'ReuniaoParticipantesController'
+		    })
+		    
+		    
 
 			.state('reunioes',{
 				url:'/reunioes',
@@ -76,10 +101,6 @@
 			}).state('editReuniao',{
 					url:'/reunioes/:id/edit',
 					templateUrl: 'views/reunioes/reunioes-edit.html',
-					controller:'ReuniaoController'
-			}).state('editReuniaoParticipantes',{
-					url:'/reunioes-participantes/:id/edit',
-					templateUrl: 'views/reunioes/reunioes-participantes-edit.html',
 					controller:'ReuniaoController'
 			}).state('editReuniaoPDF',{
 					url:'/reunioes-pdf/:id/edit',
@@ -128,13 +149,13 @@
 				templateUrl: 'views/itens/itens.html',
 				controller:'ItemController'
 			}).state('viewItem',{
-        url:'/itens/:id/view',
-        templateUrl: 'views/itens/itens-view.html',
-        controller:'ItemController'
+				url:'/itens/:id/view',
+				templateUrl: 'views/itens/itens-view.html',
+				controller:'ItemController'
 			}).state('newItem',{
-        url:'/itens/:id/new',
-     		templateUrl: 'views/itens/itens-create.html',
-        controller:'ItemController'
+				url:'/itens/:id/new',
+				templateUrl: 'views/itens/itens-create.html',
+				controller:'ItemController'
 			}).state('editItem',{
 					url:'/itens/:id/edit',
 					templateUrl: 'views/itens/itens-edit.html',
