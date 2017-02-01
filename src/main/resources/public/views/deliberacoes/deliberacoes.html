@@ -12,15 +12,15 @@
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="deliberacao in deliberacoes">
-          <td style="width: 25%; word-wrap:break-word;">{{deliberacao.titulo}}</td>
-          <td style="width: 35%; word-wrap:break-word;">{{deliberacao.assunto}}</td>
-          <td style="width: 10%; word-wrap:break-word;">{{deliberacao.data}}</td>
+      <tr ng-repeat="item in itens">
+          <td style="width: 25%; word-wrap:break-word;">{{item.titulo}}</td>
+          <td style="width: 35%; word-wrap:break-word;">{{item.assuntoDeliberacao}}</td>
+          <td style="width: 10%; word-wrap:break-word;">{{item.dataDeliberacao}}</td>
           <td style="width: 30%;">
-              <a class="btn btn-primary" ui-sref="viewDeliberacao({id:deliberacao.id})">View</a>
-              <a class="btn btn-primary" ui-sref="editDeliberacao({id:deliberacao.id})">Edit</a>
-              <a class="btn btn-primary" ng-click="gerarPDF(deliberacao)">Gerar PDF</a>
-              <a class="btn btn-danger"  ng-click="deleteDeliberacao(deliberacao)">Delete</a>
+              <a class="btn btn-primary" ui-sref="viewDeliberacao({id:item.id})">View</a>
+              <a class="btn btn-primary" ui-sref="editDeliberacao({id:item.id})">Edit</a>
+              <a class="btn btn-primary" ui-sref="editDeliberacaoPDF({id:item.id})">Gerar PDF</a>
+              <a class="btn btn-danger"  ng-click="deleteDeliberacao(item)">Delete</a>
           </td>
       </tr>
     </tbody>

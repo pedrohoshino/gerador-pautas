@@ -2,15 +2,24 @@
   <div ng-init="getDeliberacao()">
     <table class="table simpletable">
         <tr>
-            <td><h3>Detalhes da Deliberacao: {{deliberacao.titulo}}</h3></td>
+            <td><h3>Detalhes da Deliberacao</h3></td>
             <td></td>
         </tr>
         <tr>
-            <td ta-bind text-angular ng-model="deliberacao.arquivo"></td>
+            <td>Assunto</td>
+            <td>{{item.assuntoDeliberacao}}</td>
+        </tr>
+        <tr>
+            <td>Data</td>
+            <td>{{item.dataDeliberacao}}</td>
+        </tr>
+        <tr>
+            <td>Situação</td>
+            <td>{{item.situacao}}</td>
         </tr>
     </table>
   </div>
   <div>
-      <a class="btn btn-primary" ui-sref="editDeliberacao({id:deliberacao.id})">Edit</a>
+      <a class="btn btn-primary" ui-sref="editDeliberacao({id:item.id})">Edit</a>
   </div>
 </div>

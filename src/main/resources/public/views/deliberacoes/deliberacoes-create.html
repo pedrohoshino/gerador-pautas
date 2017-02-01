@@ -1,31 +1,51 @@
-<div>
-  <div class="container pad-top">
-    <form class="form-horizontal" role="form" ng-submit="addDeliberacao()">
+<div ng-init="getReunioes()">
+  <div class="container pad-top" ng-init="getItens()">
+    <form class="form-horizontal" role="form">
       <h1>Deliberação</h1>
 
       <div class="form-group">
-          <label for="name" class="col-sm-2 control-label">Titulo</label>
+          <label for="reuniao" class="col-sm-2 control-label">Reuniao</label>
           <div class="col-sm-10">
-              <input type="text" ng-model="deliberacao.titulo" class="form-control" id="titulo" placeholder="Titulo da Deliberação"/>
+              <select class="form-control" ng-model="item.reuniao" ng-options="reuniao as reuniao.titulo for reuniao in reunioes track by reuniao.id"></select>
           </div>
       </div>
-      <div class="form-group">
-          <label for="description" class="col-sm-2 control-label">Assunto</label>
-          <div class="col-sm-10">
-              <input type="text" ng-model="deliberacao.assunto" class="form-control" id="assunto" placeholder="Assunto da Deliberação"/>
-          </div>
-      </div>
-      <div class="form-group">
-          <label for="description" class="col-sm-2 control-label">Data</label>
-          <div class="col-sm-10">
-              <input type="text" ng-model="deliberacao.data" class="form-control" id="data" placeholder="Data da Deliberação"/>
-          </div>
-      </div>
-      <div text-angular ng-model="deliberacao.arquivo"></div>
 
+      <button type="button" ng-click="selecionar()">Select</button>
 
-      <div>
-          <input type="submit" class="btn btn-primary" value="Save"/>
+      <div ng-show="selected">
+        <div class="form-group">
+            <label for="categoria" class="col-sm-2 control-label">Item</label>
+            <div class="col-sm-10">
+                <select class="form-control" ng-model="item" ng-options="item2 as item2.titulo for item2 in itens track by item2.id"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="description" class="col-sm-2 control-label">Assunto</label>
+            <div class="col-sm-10">
+                <input type="text" ng-model="item.assuntoDeliberacao" class="form-control" id="assunto" placeholder="Assunto da Deliberação"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="description" class="col-sm-2 control-label">Data</label>
+            <div class="col-sm-10">
+                <input type="text" ng-model="item.dataDeliberacao" class="form-control" id="data" placeholder="Data da Deliberação"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="situacao" class="col-sm-2 control-label">Situação</label>
+            <div class="col-sm-10">
+              <select class="form-control" ng-model="item.situacao">
+                 <option>Pendente</option>
+                 <option>Aprovado</option>
+                 <option>Reprovado</option>
+                 <option>Retirado de Pauta</option>
+              </select>
+            </div>
+        </div>
+
+        <div>
+            <a class="btn btn-primary" ng-click="addDeliberacao()">Save</a>
+        </div>
       </div>
     </form>
   </div>

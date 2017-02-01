@@ -103,7 +103,7 @@
 					templateUrl: 'views/reunioes/reunioes-edit.html',
 					controller:'ReuniaoController'
 			}).state('editReuniaoPDF',{
-					url:'/reunioes-pdf/:id/edit',
+					url:'/reunioes-pdf/:id/pdf',
 					templateUrl: 'views/reunioes/reunioes-pdf.html',
 					controller:'ReuniaoController'
 			})
@@ -123,6 +123,10 @@
 			}).state('editDeliberacao',{
 					url:'/deliberacoes/:id/edit',
 					templateUrl: 'views/deliberacoes/deliberacoes-edit.html',
+					controller:'DeliberacaoController'
+			}).state('editDeliberacaoPDF',{
+					url:'/deliberacoes/:id/pdf',
+					templateUrl: 'views/deliberacoes/deliberacoes-pdf.html',
 					controller:'DeliberacaoController'
 			})
 
