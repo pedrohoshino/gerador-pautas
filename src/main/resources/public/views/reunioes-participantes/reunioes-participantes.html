@@ -7,7 +7,6 @@
                 <thead>
                   <tr>
                     <th>Participante</th>
-                    <th>Sobrenome</th>
                     <th>Categoria</th>
                     <th>Tipo de Participação</th>
                     <th>Ações</th>
@@ -15,9 +14,8 @@
                 </thead>
                 <tbody>
                   <tr ng-repeat="reuniaoParticipante in reuniaoParticipantes">
-                      <td style="width: 10%; word-wrap:break-word;">{{reuniaoParticipante.participante.nome}}</td>
-                      <td style="width: 10%; word-wrap:break-word;">{{reuniaoParticipante.participante.sobrenome}}</td>
-                      <td style="width: 5%; word-wrap:break-word;">{{reuniaoParticipante.participante.tipo}}</td>
+                      <td style="width: 35%; word-wrap:break-word;">{{reuniaoParticipante.participante.nome}} {{reuniaoParticipante.participante.sobrenome}}</td>
+                      <td style="width: 10%; word-wrap:break-word;">{{reuniaoParticipante.participante.tipo}}</td>
                       <td style="width: 15%; word-wrap:break-word;">{{reuniaoParticipante.tipoParticipacao}}</td>
                       <td>
                           <a class="btn btn-primary" ui-sref="viewReuniaoParticipantes({id:reuniaoParticipante.id})">View</a>
