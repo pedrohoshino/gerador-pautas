@@ -15,7 +15,7 @@
       <tr ng-repeat="ata in atas">
           <td style="width: 25%; word-wrap:break-word;">{{ata.titulo}}</td>
           <td style="width: 35%; word-wrap:break-word;">{{ata.descricao}}</td>
-          <td style="width: 10%; word-wrap:break-word;">{{ata.data}}</td>
+          <td style="width: 10%; word-wrap:break-word;">{{ata.data | date: 'dd/MM/yyyy'}}</td>
           <td style="width: 30%;">
               <a class="btn btn-primary" ui-sref="viewAta({id:ata.id})">View</a>
               <a class="btn btn-primary" ui-sref="editAta({id:ata.id})">Edit</a>

@@ -1,5 +1,7 @@
 package br.unicamp.model;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name="ata")
@@ -24,7 +28,8 @@ public class Ata {
 	private String descricao;
 	
 	@Column(name="data")
-	private String data;
+	@Temporal(value=TemporalType.DATE)
+	private Date data;
 	
 	@Column(name="texto", length=20000)
 	//private Clob texto;
@@ -39,7 +44,7 @@ public class Ata {
 
 	}
 
-	public Ata(Long idAta, String titulo, String descricao, String data, String texto) {
+	public Ata(Long idAta, String titulo, String descricao, Date data, String texto) {
 		this.idata = idAta;
 		this.titulo = titulo;
 		this.descricao = descricao;
@@ -51,7 +56,7 @@ public class Ata {
 		return texto;
 	}
 
-	public String getData() {
+	public Date getData() {
 		return data;
 	}
 
@@ -71,7 +76,7 @@ public class Ata {
 		this.texto = texto;
 	}
 
-	public void setData(String data) {
+	public void setData(Date data) {
 		this.data = data;
 	}
 

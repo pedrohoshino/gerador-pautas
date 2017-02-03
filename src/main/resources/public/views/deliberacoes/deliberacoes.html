@@ -15,7 +15,7 @@
       <tr ng-repeat="item in itens">
           <td style="width: 25%; word-wrap:break-word;">{{item.titulo}}</td>
           <td style="width: 35%; word-wrap:break-word;">{{item.assuntoDeliberacao}}</td>
-          <td style="width: 10%; word-wrap:break-word;">{{item.dataDeliberacao}}</td>
+          <td style="width: 10%; word-wrap:break-word;">{{item.dataDeliberacao | date: 'dd/MM/yyyy'}}</td>
           <td style="width: 30%;">
               <a class="btn btn-primary" ui-sref="viewDeliberacao({id:item.id})">View</a>
               <a class="btn btn-primary" ui-sref="editDeliberacao({id:item.id})">Edit</a>
