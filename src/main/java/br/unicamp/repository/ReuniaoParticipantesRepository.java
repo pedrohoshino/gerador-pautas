@@ -9,16 +9,15 @@ import org.springframework.data.repository.query.Param;
 import br.unicamp.model.ReuniaoParticipantes;
 
 public interface ReuniaoParticipantesRepository extends JpaRepository<ReuniaoParticipantes, Long> {
-
+	
+	@Query("select r from ReuniaoParticipantes r order by r.participante.nome, r.participante.sobrenome, r.participante.tipo, r.tipoParticipacao")
 	List<ReuniaoParticipantes> findAll();
 		
-	@Query("select r from ReuniaoParticipantes r where r.participante.id = :idParticipante")
+	@Query("select r from ReuniaoParticipantes r where r.participante.id = :idParticipante order by r.participante.nome, r.participante.sobrenome, r.participante.tipo, r.tipoParticipacao")
 	List<ReuniaoParticipantes> findAllParticipantes(@Param("idParticipante") Long idParticipante);
 	
 	
-	
-	
-	@Query("select r from ReuniaoParticipantes r where r.reuniao.id = :idReuniao")
+	@Query("select r from ReuniaoParticipantes r where r.reuniao.id = :idReuniao order by r.participante.nome, r.participante.sobrenome, r.participante.tipo, r.tipoParticipacao")
 	List<ReuniaoParticipantes> findAllReunioes(@Param("idReuniao") Long idReuniao);
 	
 	ReuniaoParticipantes findOne(Long id);

@@ -19,13 +19,13 @@ public class Item {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-	@Column(name="titulo")
+	@Column(name="titulo", length=3000)
 	private String titulo;
 	
 	//@Column(name="categoria")
 	//private Long categoria;
 	
-	@Column(name="descricao")
+	@Column(name="descricao", length=3000)
 	private String descricao;
 	
 	@Column(name="situacao")
@@ -37,7 +37,7 @@ public class Item {
 	@Column(name="dataDeliberacao")
 	private String dataDeliberacao;
 	
-	@Column(name="assuntoDeliberacao")
+	@Column(name="assuntoDeliberacao", length=3000)
 	private String assuntoDeliberacao;
 	
 	@Column(name="arquivoDeliberacao")

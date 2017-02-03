@@ -12,9 +12,9 @@
       </thead>
       <tbody>
         <tr ng-repeat="usuario in usuarios">
-            <td style="width: 40%; word-wrap:break-word;">{{usuario.login}}</td>
-            <td style="width: 40%; word-wrap:break-word;">{{usuario.tipo}}</td>
-            <td style="width: 20%">
+            <td style="width: 10%; word-wrap:break-word;">{{usuario.login}}</td>
+            <td style="width: 10%; word-wrap:break-word;">{{usuario.tipo}}</td>
+            <td style="width: 30%">
                 <a class="btn btn-primary" ui-sref="viewUsuario({id:usuario.id})">View</a>
                 <a class="btn btn-primary" ui-sref="editUsuario({id:usuario.id})">Edit</a>
                 <a class="btn btn-danger"  ng-click="deleteUsuario(usuario)">Delete</a>

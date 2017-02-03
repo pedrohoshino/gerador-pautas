@@ -13,7 +13,7 @@
     </thead>
     <tbody>
       <tr ng-repeat="reuniao in reunioes">
-          <td style="width: 10%; word-wrap:break-word;">{{reuniao.data}}</td>
+          <td style="width: 10%; word-wrap:break-word;">{{reuniao.data | date: 'dd/MM/yyyy'}}</td>
           <td style="width: 10%; word-wrap:break-word;">{{reuniao.hora}}</td>
           <td style="width: 30%; word-wrap:break-word;">{{reuniao.titulo}}</td>
           <td style="width: 50%;">

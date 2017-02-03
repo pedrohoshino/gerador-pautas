@@ -13,7 +13,7 @@ public class ReuniaoStub {
 	private static Long idIndex = 1L;
 
 	static {
-		Reuniao a = new Reuniao(1L, "Demo", "Demostração de Reunião", "85", "10/09/2016", "10:00", "");
+		Reuniao a = new Reuniao();
 		reunioes.put(1L, a);
 	}
 

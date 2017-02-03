@@ -1,5 +1,6 @@
 package br.unicamp.model;
 
+import java.util.Date;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -10,6 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 
 @Entity
@@ -23,7 +26,8 @@ public class Reuniao {
 	private Long id;
 
 	@Column(name="data")
-	private String data;
+	@Temporal(value=TemporalType.DATE)
+	private Date data;
 
 	@Column(name="hora")
 	private String hora;
@@ -37,7 +41,7 @@ public class Reuniao {
 	@Column(name="descricao")
 	private String descricao;
 
-	@Column(name="textoReuniao")
+	@Column(name="textoReuniao", length=10000)
 	private String textoReuniao;
 
 
@@ -51,7 +55,7 @@ public class Reuniao {
 
 	}
 
-	public Reuniao(Long id, String titulo, String descricao, String local, String data, String hora, String textoReuniao) {
+	public Reuniao(Long id, String titulo, String descricao, String local, Date data, String hora, String textoReuniao) {
 		this.id = id;
 		this.data = data;
 		this.hora = hora;
@@ -63,27 +67,27 @@ public class Reuniao {
 
 
 	public Long getId() {
-		return id;
+		return this.id;
 	}
 
-	public String getData() {
-		return data;
+	public Date getData() {
+		return this.data;
 	}
 
 	public String getDescricao() {
-		return descricao;
+		return this.descricao;
 	}
 
 	public String getHora() {
-		return hora;
+		return this.hora;
 	}
 
 	public String getTitulo() {
-		return titulo;
+		return this.titulo;
 	}
 
 	public String getLocal() {
-		return local;
+		return this.local;
 	}
 
 	public String getTextoReuniao() {
@@ -94,7 +98,7 @@ public class Reuniao {
 		this.id = id;
 	}
 
-	public void setData(String data) {
+	public void setData(Date data) {
 		this.data = data;
 	}
 

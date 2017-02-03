@@ -26,7 +26,7 @@ public class Ata {
 	@Column(name="data")
 	private String data;
 	
-	@Column(name="texto")
+	@Column(name="texto", length=20000)
 	//private Clob texto;
 	private String texto;
 	

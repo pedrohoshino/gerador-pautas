@@ -37,19 +37,8 @@ public class Usuario {
 		this.id =id;
 		this.login = login;
 		this.tipo = tipo;
+        this.senha = this.codificaSenha(senha);	
 		
-
-	/*	MessageDigest algorithm = MessageDigest.getInstance("SHA-256");
-		byte messageDigest[] = algorithm.digest(senha.getBytes("UTF-8"));
-		 
-		StringBuilder hexString = new StringBuilder();
-		for (byte b : messageDigest) {
-		  hexString.append(String.format("%02X", 0xFF & b));
-		}
-		this.senha = hexString.toString();
-		*/
-		
-		this.senha = codificaSenha(senha);
 		
 	}
 	
@@ -57,7 +46,8 @@ public class Usuario {
 		
 		MessageDigest algorithm = MessageDigest.getInstance("SHA-256");
 		byte messageDigest[] = algorithm.digest(senha.getBytes("UTF-8"));
-		 
+	
+		
 		StringBuilder hexString = new StringBuilder();
 		for (byte b : messageDigest) {
 		  hexString.append(String.format("%02X", 0xFF & b));
@@ -95,7 +85,7 @@ public class Usuario {
 		this.login = login;
 	}
 
-	public void setSennha(String senha) throws NoSuchAlgorithmException, UnsupportedEncodingException {
+	public void setSenha(String senha) throws NoSuchAlgorithmException, UnsupportedEncodingException {
 		this.senha = codificaSenha(senha);
 	}
 	

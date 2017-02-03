@@ -6,6 +6,7 @@
       <thead>
         <tr>
           <th>Nome</th>
+          <th>Sobrenome</th>
           <th>Matricula</th>
           <th>Tipo</th>
           <th>Ações</th>
@@ -13,10 +14,11 @@
       </thead>
       <tbody>
         <tr ng-repeat="participante in participantes">
-            <td style="width: 30%; word-wrap:break-word;">{{participante.nome}}</td>
-            <td style="width: 30%; word-wrap:break-word;">{{participante.matricula}}</td>
+            <td style="width: 20%; word-wrap:break-word;">{{participante.nome}}</td>
+            <td style="width: 20%; word-wrap:break-word;">{{participante.sobrenome}}</td>
+            <td style="width: 15%; word-wrap:break-word;">{{participante.matricula}}</td>
             <td style="width: 20%; word-wrap:break-word;">{{participante.tipo}}</td>
-            <td style="width: 20%">
+            <td style="width: 25%">
                 <a class="btn btn-primary" ui-sref="viewParticipante({id:participante.id})">View</a>
                 <a class="btn btn-primary" ui-sref="editParticipante({id:participante.id})">Edit</a>
                 <a class="btn btn-danger"  ng-click="deleteParticipante(participante)">Delete</a>

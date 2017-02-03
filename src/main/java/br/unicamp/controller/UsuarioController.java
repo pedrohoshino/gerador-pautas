@@ -1,5 +1,7 @@
 																																																																																																					package br.unicamp.controller;
 
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +28,11 @@ public class UsuarioController {
 	
 
 	@RequestMapping(value = "usuarios", method = RequestMethod.POST)
-	public Usuario create(@RequestBody Usuario usuario){
-		return usuarioRepository.save(usuario);
+	public Usuario create(@RequestBody Usuario usuario) throws NoSuchAlgorithmException, UnsupportedEncodingException{
+		Usuario novoUser  = new Usuario(usuario.getId(), usuario.getLogin(), usuario.getSenha(), usuario.getTipo());
+
+		return usuarioRepository.save(novoUser);
+		
 	}
 	
 	@RequestMapping(value = "usuarios/{id}", method = RequestMethod.GET)
@@ -37,10 +42,11 @@ public class UsuarioController {
 	}
 
 	@RequestMapping(value = "usuarios/{id}", method = RequestMethod.PUT)
-	public Usuario update(@PathVariable Long id, @RequestBody Usuario usuario){
-		
+	public Usuario update(@PathVariable Long id, @RequestBody Usuario usuario) throws NoSuchAlgorithmException, UnsupportedEncodingException{
 
-		return usuarioRepository.save(usuario);
+		Usuario editUser  = new Usuario(usuario.getId(), usuario.getLogin(), usuario.getSenha(), usuario.getTipo());
+
+		return usuarioRepository.save(editUser);
 	}
 
 	@RequestMapping(value = "usuarios/{id}", method = RequestMethod.DELETE)
